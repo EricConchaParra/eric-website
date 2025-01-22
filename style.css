@@ -1,0 +1,226 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box; /* Asegúrate de que el padding no cause desbordamiento */
+}
+
+.container h2{
+    color:#121f3c;
+}
+
+.hero{
+    flex: 1;
+    text-align: left;
+}
+
+.main-title{
+    font-family: Helvetica;
+    font-size: 22pt;
+    text-align: left;
+    color: white
+}
+
+.subtitle{
+    font-family: "Kalam";
+    font-size: 16pt;
+}
+
+.logo {
+    padding-left: 10px;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+@media (max-width: 300px) {
+    .logo {
+        display: block; /* Center the logo */
+        margin: 0 auto; /* Center the logo horizontally */
+    }
+}
+
+header {
+    background-color: #0f172a;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.header-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Add this to your style.css */
+.gallery {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-image {
+    width: 70%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 500px; /* Optional: Set a max height to prevent excessive height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 100px; /* Optional: Set a max height for thumbnails */
+    object-fit: cover; /* Ensure thumbnails cover the area without distortion */
+}
+
+.section-body {
+    display: flex;
+    align-items: center; /* Center the items vertically */
+    flex-direction: row; /* Default to row layout */
+}
+
+.section-body .container {
+    flex: 1; /* Allow the text container to take available space */
+}
+
+.section-body img {
+    max-width: 100%; /* Asegúrate de que las imágenes no excedan el contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    flex: 1; /* Allow the image to take available space */
+    margin-left: 0px; /* Add some space between text and image */
+}
+
+h1, h2 {
+    color: #0f172a;
+}
+
+button {
+    background-color: #0f172a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #1e293b;
+}
+
+footer {
+    background-color: #0f172a;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.reconocimientos-container {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .reconocimientos {
+    display: inline-block;
+    /*max-width: 800px;*/
+  }
+  
+  .reconocimientos h2 {
+    font-size: 24px;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+  
+  .certificates {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .certificate {
+    width: 150px;
+    height: auto;
+  }
+  
+  .certificate img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .certificate img:hover {
+    transform: scale(1.1);
+  }
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .header-image {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    section {
+        margin: 20px 0;
+    }
+
+    .section-body {
+        flex-direction: column; /* Stack sections vertically on small screens */
+    }
+}
