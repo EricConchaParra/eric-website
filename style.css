@@ -1,66 +1,180 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Use Helvetica Neue or Arial for body text */
     line-height: 1.6;
-    color: #333;
+    color: #333; /* Keep dark grey text color */
     overflow-x: hidden; /* Evita el scroll horizontal */
+    background-color: #f8f5f0; /* Light off-white background */
 }
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 960px; /* Increase max-width for a wider layout */
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 20px; /* Adjust horizontal padding */
     box-sizing: border-box; /* Asegúrate de que el padding no cause desbordamiento */
 }
 
-.container h2{
-    color:#121f3c;
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
 
-.hero{
+.hero-content div:first-child {
+    flex: 4;
+}
+
+.hero-content div:last-child {
     flex: 1;
-    text-align: left;
 }
 
-.main-title{
-    font-family: Helvetica;
-    font-size: 22pt;
-    text-align: left;
-    color: white
+#eric-placeholder {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
 }
 
-.subtitle{
-    font-family: 'Kalam', sans-serif;
-    font-size: 16pt;
+#testimonios .container {
+    flex-direction: column;
 }
 
-.logo {
-    padding-left: 10px;
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
+.testimonials-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px; /* Espacio para scrollbar */
 }
 
-@media (max-width: 300px) {
-    .logo {
-        display: block; /* Center the logo */
-        margin: 0 auto; /* Center the logo horizontally */
-    }
+.testimonial {
+    flex: 0 0 80%; /* Ajusta el ancho de cada testimonio */
+    margin-right: 20px;
+    scroll-snap-align: start;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-header {
-    background-color: #0f172a;
-    color: #fff;
-    padding: 40px 20px;
+.testimonial blockquote {
+    font-style: italic;
+    margin: 0 0 10px 0;
+    padding: 0 0 0 20px; /* Added left padding */
+    quotes: "“" "”" "‘" "’";
+    border-left: 4px solid var(--color-primary); /* Added vertical line */
 }
 
-.header-image {
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
+.testimonial blockquote::before {
+    content: open-quote;
+    font-size: 1.5em;
+    color: var(--color-primary);
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+.testimonial blockquote::after {
+    content: close-quote;
+    font-size: 1.5em;
+    color: var(--color-primary);
+    line-height: 0.1em;
+    margin-left: 0.25em;
+    vertical-align: -0.4em;
+}
+
+.testimonial cite {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--color-dark);
+}
+
+/* Testimonials Carousel */
+.testimonials-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px; /* Space for scrollbar */
+}
+
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel-dot.active {
+    background-color: blue;
+}
+
+.carousel-arrow {
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: var(--color-dark);
+    user-select: none; /* Prevent text selection */
+}
+
+.testimonials-carousel {
+    display: flex;
+    overflow-x: hidden; /* Hide scrollbar */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px; /* Space for layout */
+}
+
+/* Hide scrollbar for different browsers */
+.testimonials-carousel::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.testimonials-carousel {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+/* HABILIDADES */
+#habilidades .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+nav ul {
+    list-style: none; /* Remove list bullets */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for horizontal navigation */
+}
+
+nav li {
+    margin-left: 20px; /* Add space between navigation items */
+}
+
+nav a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Match text color */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Add underline on hover */
 }
 
 /* Add this to your style.css */
@@ -91,24 +205,211 @@ header {
 }
 
 .section-body {
-    display: flex;
-    align-items: center; /* Center the items vertically */
-    flex-direction: row; /* Default to row layout */
+    padding: 80px 0; /* Increase vertical padding for sections */
 }
 
 .section-body .container {
-    flex: 1; /* Allow the text container to take available space */
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Increase space between columns */
+}
+
+#about .container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#about .container h2 {
+    flex-shrink: 0; /* Prevent the heading from shrinking */
+}
+
+.section-body .about-content {
+    display: flex;
+    gap: 40px; /* Adjust space between columns */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.section-body .about-text {
+    flex: 2; /* Allow text content to take more space */
+    min-width: 300px; /* Ensure a minimum width for text column */
+}
+
+.section-body .about-image {
+    flex: 1; /* Allow images to take available space */
+    text-align: center; /* Center images */
+    min-width: 200px; /* Adjust minimum width for image column */
+}
+
+.section-body .certifications {
+    flex: 1; /* Allow certifications to take available space */
+    min-width: 200px; /* Ensure a minimum width for certifications column */
+    margin-top: 20px; /* Add space above certifications when stacked */
+}
+
+.case-study {
+    border: 1px solid #ccc; /* Add a border */
+    padding: 20px; /* Add padding */
+    margin-bottom: 40px; /* Add space between case studies */
+    border-radius: 8px; /* Add rounded corners */
+    background-color: #fff; /* White background for case studies */
+}
+
+.case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Two columns, adjust min-width as needed */
+    gap: 40px; /* Space between grid items */
+    margin-top: 40px; /* Add space above the grid */
+}
+
+.section-body .coaching-content,
+.section-body .case-content,
+.section-body .skills-grid {
+    display: flex;
+    gap: 60px; /* Increase space between columns */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    align-items: center; /* Vertically align items in case content */
+}
+
+.section-body .coaching-text,
+.section-body .case-text,
+.section-body .skills-column {
+    flex: 2; /* Allow text content to take more space */
+    min-width: 300px; /* Ensure a minimum width for text column */
+}
+
+.section-body .coaching-text h3,
+.section-body .coaching-text ul {
+    margin-bottom: 20px; /* Add space below headings and lists */
+}
+
+.section-body .case-text ul li {
+    margin-bottom: 10px; /* Add space between list items */
+}
+
+.section-body .case-image {
+    flex: 1; /* Allow images to take available space */
+    text-align: center; /* Center images */
+    min-width: 250px; /* Increase minimum width for image column */
 }
 
 .section-body img {
-    max-width: 100%; /* Asegúrate de que las imágenes no excedan el contenedor */
-    height: auto; /* Mantiene la relación de aspecto */
-    flex: 1; /* Allow the image to take available space */
-    margin-left: 0px; /* Add some space between text and image */
+    max-width: 100%; /* Ensure images don't exceed their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Add rounded corners to images */
 }
 
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+    }
+
+    #eric-placeholder {
+        width: 80%; /* Make image take up more width on mobile */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .section-body .container,
+    .section-body .about-content,
+    .section-body .coaching-content,
+    .section-body .case-content,
+    .section-body .skills-grid {
+        flex-direction: column; /* Stack columns vertically */
+        gap: 40px; /* Adjust gap for stacked columns */
+    }
+
+    .section-body .about-image,
+    .section-body .coaching-image,
+    .section-body .case-image {
+        order: -1; /* Place images above text on small screens */
+        min-width: unset; /* Remove min-width on small screens */
+        width: 100%; /* Make image take full width on mobile */
+        text-align: center; /* Center the image */
+    }
+
+    .section-body .about-text,
+    .section-body .coaching-text,
+    .section-body .case-text,
+    .section-body .skills-column {
+        min-width: unset; /* Remove min-width on small screens */
+        width: 100%; /* Make text take full width on mobile */
+    }
+}
+
+/* CONTACTO */
+#contacto .container {
+    display: flex;
+    flex-direction: column; /* Stack elements by default */
+    align-items: center;
+    text-align: center;
+}
+
+#contacto h2 {
+    margin-bottom: 40px; /* More space below the main heading */
+}
+
+#contacto .contact-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between; /* Distribute space between items */
+    gap: 60px; /* Increase space between columns */
+    width: 100%; /* Take full width */
+}
+
+#contacto .contact-text {
+    flex: 2; /* Allow text to take more space */
+    min-width: 350px; /* Minimum width for text */
+    text-align: left; /* Align text to the left */
+}
+
+#contacto .contact-options,
+#contacto .social-links {
+    flex: 1; /* Allow options and links to take available space */
+    min-width: 250px; /* Minimum width for these columns */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start */
+}
+
+#contacto .contact-options p,
+#contacto .social-links p {
+    font-weight: bold; /* Make headings bold */
+    margin-bottom: 10px; /* Space below headings */
+}
+
+#contacto .contact-options a,
+#contacto .social-links a {
+    margin-bottom: 5px; /* Space between links */
+}
+
+#contacto .social-links a {
+    text-decoration: none; /* Remove underline from social links */
+    color: #fff; /* White color for social links on dark background */
+}
+
+#contacto .social-links a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
 h1, h2 {
-    color: #0f172a;
+    font-family: Georgia, serif; /* Use a serif font for headings */
+    color: #333; /* Match text color */
+    font-weight: 700; /* Ensure bold headings */
+    margin-bottom: 20px; /* Add margin below headings */
+}
+
+h1 {
+    font-size: 48px; /* Increase heading size */
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 36px; /* Increase heading size */
+    line-height: 1.2;
 }
 
 button {
@@ -125,9 +426,32 @@ button:hover {
     background-color: #1e293b;
 }
 
+.btn-primary {
+    text-decoration: none; /* Remove underline from primary buttons */
+}
+
+.bg-light {
+    background-color: #f8f5f0; /* Light off-white */
+}
+
+.bg-medium {
+    background-color: #e0e0e0; /* Light grey */
+}
+
+.bg-dark {
+    background-color: #333; /* Dark grey */
+    color: #fff; /* White text for dark background */
+}
+
+.bg-dark h2,
+.bg-dark p,
+.bg-dark a {
+    color: #fff; /* Ensure headings, paragraphs, and links are white on dark background */
+}
+
 footer {
-    background-color: #0f172a;
-    color: #fff;
+    background-color: #f8f5f0; /* Match body background color */
+    color: #333; /* Match body text color */
     text-align: center;
     padding: 20px 0;
 }
@@ -218,9 +542,9 @@ footer {
         padding: 6px 12px;
     }
 
-    section {
-        margin: 20px 0;
-    }
+section {
+    margin: 40px 0; /* Increase vertical margin for sections */
+}
 
     .section-body {
         flex-direction: column; /* Stack sections vertically on small screens */
