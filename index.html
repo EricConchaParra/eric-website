@@ -368,12 +368,17 @@ onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 20px r
         const leftArrow = document.querySelector('.carousel-arrow.left');
         const rightArrow = document.querySelector('.carousel-arrow.right');
 
+        const isMobile = () => window.innerWidth <= 768;
+
         carousel.addEventListener('scroll', () => {
             let activeIndex = 0;
             testimonials.forEach((testimonial, index) => {
                 const testimonialRect = testimonial.getBoundingClientRect();
-                if (testimonialRect.left >= 0 && testimonialRect.left < carousel.offsetWidth) {
-                    activeIndex = index;
+                // Determine active index based on which testimonial is most visible
+                if (testimonialRect.left >= 0 && testimonialRect.left < window.innerWidth) {
+                     if (testimonialRect.left < window.innerWidth / 2) { // Consider the testimonial in the first half of the screen
+                        activeIndex = index;
+                    }
                 }
             });
 
@@ -397,15 +402,17 @@ onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 20px r
         });
 
         leftArrow.addEventListener('click', () => {
+            const scrollAmount = isMobile() ? testimonials[0].offsetWidth + 20 : carousel.offsetWidth; // Scroll by testimonial width + margin on mobile
             carousel.scrollBy({
-                left: -carousel.offsetWidth,
+                left: -scrollAmount,
                 behavior: 'smooth'
             });
         });
 
         rightArrow.addEventListener('click', () => {
+             const scrollAmount = isMobile() ? testimonials[0].offsetWidth + 20 : carousel.offsetWidth; // Scroll by testimonial width + margin on mobile
             carousel.scrollBy({
-                left: carousel.offsetWidth,
+                left: scrollAmount,
                 behavior: 'smooth'
             });
         });
