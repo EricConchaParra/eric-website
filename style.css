@@ -682,3 +682,9 @@ section {
 .hero-cta-button:hover {
   background-color: #472d8c;
 }
+
+/* Explicitly set font-size and font-family for h1 within sections to address deprecation warning */
+section h1 {
+    font-size: 48px;
+    font-family: Georgia, serif;
+}
