@@ -23,21 +23,125 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: 80px; /* Increased gap */
+    padding: 80px 0; /* Added padding */
 }
 
-.hero-content div:first-child {
-    flex: 4;
+.hero-content > div:first-child {
+    flex: 1; /* Allow text content to take available space */
 }
 
-.hero-content div:last-child {
-    flex: 1;
+.hero-image {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    width: 300px; /* Set a fixed width for the image container */
+    height: 300px; /* Set a fixed height for the image container */
+    position: relative; /* Needed for absolute positioning of the background */
 }
 
-#eric-placeholder {
-    width: 300px;
-    height: 400px;
+.hero-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 50%; /* Make the image circular */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.hero-content h1 {
+    font-size: 48px; /* Adjust font size */
+    margin-bottom: 10px; /* Adjust margin */
+}
+
+.hero-content h1 strong {
+    color: #007bff; /* Blue color for the name */
+}
+
+.hero-content p {
+    font-size: 18px; /* Adjust font size */
+    margin-bottom: 20px; /* Adjust margin */
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+    margin-bottom: 20px; /* Space below buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.btn-primary {
+    display: inline-flex; /* Use flexbox for icon alignment */
+    align-items: center;
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-secondary {
+    display: inline-flex; /* Use flexbox for icon alignment */
+    align-items: center;
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text */
+    padding: 12px 24px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #f8f8f8; /* Light grey on hover */
+}
+
+.btn-icon {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    margin-left: 8px; /* Space between text and icon */
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px; /* Space between icons */
+    align-items: center;
+}
+
+.social-icons img {
+    width: 24px; /* Adjust icon size */
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Scale on hover */
+}
+
+/* Responsive adjustments for hero section */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center; /* Center text content */
+        gap: 40px; /* Adjust gap */
+    }
+
+    .hero-image {
+        width: 200px; /* Adjust image size on smaller screens */
+        height: 200px;
+    }
+
+    .hero-buttons {
+        justify-content: center; /* Center buttons */
+    }
+
+    .social-icons {
+        justify-content: center; /* Center social icons */
+    }
 }
 
 #testimonios .container {
@@ -563,15 +667,14 @@ section {
 
 /* Styles for Hero CTA Button */
 .hero-cta-button {
-  display: inline-block;
+  display: inline-flex; /* Ensure consistent display */
+  align-items: center; /* Ensure consistent vertical alignment */
   background-color: #5e3db5; /* Morado profesional */
   color: #ffffff;
-  padding: 12px 20px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
-  margin-top: 16px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   transition: background-color 0.3s ease;
 }
