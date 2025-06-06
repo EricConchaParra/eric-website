@@ -366,7 +366,7 @@ nav a:hover {
 
 .case-studies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Two columns, adjust min-width as needed */
+    grid-template-columns: 1fr; /* Single column layout */
     gap: 40px; /* Space between grid items */
     margin-top: 40px; /* Add space above the grid */
 }
