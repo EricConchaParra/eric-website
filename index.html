@@ -5,192 +5,371 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric Concha — Software Project Manager & Coach</title>
-    <meta name="description" content="¿Buscas mejorar tus proyectos de software o liderar mejor a tu equipo? Te ayudo con agilidad, coaching y liderazgo práctico que da resultados">
+    <meta name="description"
+        content="¿Buscas mejorar tus proyectos de software o liderar mejor a tu equipo? Te ayudo con agilidad, coaching y liderazgo práctico que da resultados">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Helvetica:wght@400;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="icon" href="images/logos/ec-logo-white.png" type="image/x-icon">
 </head>
 
 <body>
-    <!-- ====== HERO / SECCIÓN PRINCIPAL ====== -->
-    <section id="home" class="hero bg-light">
-        <div class="hero-content container">
-            <div>
-                <h1>Hola, soy <strong>Eric Concha</strong></h1>
-                <p style="font-size: 10pt;">Software Project Manager • Scrum Master • Product Owner • Coach de Equipos Remotos</p>
-                <p>Ayudo a profesionales y organizaciones a alcanzar la excelencia en la entrega de software de alto valor,
-                    a través de metodologías ágiles, liderazgo empático y coaching personalizado.</p>
-                <div class="hero-buttons">
-                    <a href="https://ericconcha.notion.site/182db42c02ff80a595a1e25a36fcfc50" class="btn-primary hero-cta-button">
-                        Conversemos →
-                    </a>
-                    <a href="https://www.linkedin.com/in/ericconcha/" class="btn-secondary">
-                        Ver LinkedIn 
-                    </a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logos/ec-logo-white.png" alt="Eric Concha Logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#coaching">Coaching</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto" class="nav-cta">Conversemos</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span>✨ Líder de Projectos de Software</span>
+                    </div>
+                    <h1>
+                        Hola, soy <span class="text-gradient">Eric Concha</span>
+                    </h1>
+                    <p class="hero-subtitle">Software Project Manager • Product Owner • Coach de Equipos Remotos</p>
+                    <p class="hero-description">
+                        Ayudo a profesionales y organizaciones a alcanzar la excelencia en la entrega de software de
+                        alto valor,
+                        a través de metodologías ágiles, liderazgo empático y coaching personalizado.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="https://ericconcha.notion.site/182db42c02ff80a595a1e25a36fcfc50" class="btn-primary">
+                            <span>Conversemos</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ericconcha/" class="btn-secondary">
+                            <span>Ver LinkedIn</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">12+</span>
+                            <span class="stat-label">Años de experiencia</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Proyectos exitosos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Usuarios impactados</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="images/eric-perfil2024.jpeg" alt="Eric Concha Project Manager">
+                        <div class="image-glow"></div>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img id="eric-placeholder" src="images/eric-perfil2024.jpeg" alt="Eric Concha Project Manager">
+        </div>
+        <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <span>Descubre más</span>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+                <div class="scroll-arrow"></div>
             </div>
         </div>
     </section>
 
-    <!-- ====== SOBRE MÍ ====== -->
-    <section id="about" class="section-body bg-medium">
+    <!-- About Section -->
+    <section id="about" class="section">
         <div class="container">
-            <h2>Sobre Mí</h2>
-            <div class="about-text">
-                <p>Con más de <strong>12 años de experiencia</strong> en gestión de proyectos, desarrollo de
-                    productos y transformación digital, he liderado iniciativas en entornos de alta regulación y
-                    complejidad. Actualmente soy <strong>Project Manager en BairesDev</strong> y fundador de <em>EC
-                        Consulting</em>, donde brindo servicios de consultoría tecnológica y coaching de equipos
-                    remotos.</p>
-                <p>Mi trayectoria incluye roles como <strong>Product Owner en Gloria AI</strong>, donde lancé una
-                    plataforma de inteligencia artificial para calificación de leads y servicio al cliente;
-                    <strong>Project Manager y Staff Manager en Webtronic Labs</strong>, donde implementé procesos
-                    ágiles y lideré la participación en eMerge Americas 2024; y <strong>COO en Zenitx
-                        Informática</strong>, donde dirigí la adopción de herramientas digitales y la continuidad de
-                    negocios durante la pandemia.</p>
-                <p>En cada proyecto, mi misión ha sido no solo <strong>entregar resultados medibles</strong>, sino
-                    también <strong>fomentar el crecimiento profesional</strong> y la motivación de cada miembro del
-                    equipo. Creo en un liderazgo basado en <strong>empatía</strong>, <strong>transparencia</strong>
-                    y <strong>colaboración continua</strong>.</p>
-                <p>Vivo en <strong>Chillán Viejo, Ñuble, Chile</strong>. En mi tiempo libre me dedico a la música
-                    (piano y guitarra) y disfruto compartir con mi familia (mi esposa Fernanda y mis dos hijos:
-                    Joaquín y Tamara).</p>
+            <div class="section-header">
+                <h2>Sobre Mí</h2>
+                <p class="section-subtitle">Más de una década transformando equipos y proyectos de software</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Más de doce años fomentando la innovación y la eficiencia en cada proyecto de software que
+                        lidero. A lo largo de mi carrera he tenido el privilegio de gestionar más de 50 iniciativas
+                        para clientes de Estados Unidos y América Latina: desde el diseño y lanzamiento de una
+                        plataforma de IA en Gloria AI hasta la optimización de operaciones ágiles en Webtronic Labs
+                        y la dirección de la adopción de sistemas ERP en Zenitx. Actualemnte en BairesDev, coordino
+                        múltiples equipos distribuidos, equilibrando plazos ajustados y expectativas de calidad para
+                        maximizar el retorno de inversión y la satisfacción del usuario final.
+                    </p>
+
+                    <p>
+                        Mi enfoque se basa en tres pilares fundamentales: resultados medibles, liderazgo empático y
+                        mejora continua. Creo en la transparencia y la colaboración como motores de alto
+                        rendimiento, y por eso acompaño a cada profesional y equipo con coaching personalizado,
+                        dinámicas prácticas y métricas claras que evidencian el progreso. Si buscas transformar tu
+                        forma de trabajar, reducir tiempos de entrega y descubrir nuevas oportunidades de
+                        crecimiento, hablemos: juntos vamos a convertir desafíos técnicos y organizacionales en
+                        historias de éxito.
+                    </p>
+                </div>
+
+                <div class="about-image">
+                    <img src="images/airport2024.jpeg" alt="Eric Concha 2024">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== COACHING & FILOSOFÍA ====== -->
-    <section id="coaching" class="section-body bg-dark">
+    <!-- Coaching Section -->
+    <section id="coaching" class="section section-dark">
         <div class="container">
-            <h2>Coaching de Equipos & Liderazgo</h2>
+            <div class="section-header">
+                <h2>Equipos de Alto Rendimiento & Liderazgo</h2>
+                <p class="section-subtitle">Impulsamos la excelencia operacional y humana, diseñando el marco de trabajo que mejor calce con tu negocio.</p>
+            </div>
+
             <div class="coaching-content">
-                <div class="coaching-text">
-                    <p>Mi filosofía de coaching se basa en potenciar a cada persona y equipo para alcanzar su máximo
-                        potencial. Creo que <strong>un equipo motivado y alineado</strong> con objetivos claros es la
-                        clave para la <strong>excelencia en la entrega de software</strong>. Mis intervenciones
-                        combinan:</p>
-                    <ul>
-                        <li><strong>Coaching Individual:</strong> Sesiones uno a uno para fortalecer habilidades de
-                            liderazgo, comunicación y manejo del cambio.</li>
-                        <li><strong>Coaching de Equipos:</strong> Talleres y dinámicas focalizadas en mejorar la
-                            colaboración, la cohesión y la resolución de conflictos.</li>
-                        <li><strong>Coaching Ágil:</strong> Implementación de marcos Scrum/Kanban, optimización de
-                            ceremonias y métricas que impulsan la mejora continua.</li>
-                    </ul>
-                    <p>Los beneficios para mis clientes incluyen:</p>
-                    <ul>
-                        <li>Mejora en la productividad y moral del equipo.</li>
-                        <li>Reducción de tiempos de entrega y retrabajo.</li>
-                        <li>Mayor claridad en roles y expectativas.</li>
-                        <li>Capacidad de adaptación rápida a cambios del negocio.</li>
-                    </ul>
-                    <p>Ofrezco <strong>programas personalizados</strong> que se ajustan a las necesidades específicas de
-                        cada organización, ya sea en empresas emergentes, pymes o grandes corporaciones.</p>
+                <div class="coaching-philosophy">
+                    <div class="philosophy-card">
+                        <h3>Nuestra propuesta</h3>
+                        <p>Desde mentoría uno a uno hasta la creación de una metodología de trabajo a medida, combinamos enfoques formales y dinámicas prácticas para lograr mejoras reales en <strong>productividad, comunicación y adaptabilidad</strong>. Cada paso se ajusta a tu cultura organizacional y a los retos específicos de tu equipo.</p>
+                    </div>
+                </div>
 
-                    <h3>Servicios de Coaching</h3>
-                    <ul>
-                        <li><strong>Coaching de Gestión de Proyectos:</strong> Asesoría en planificación, control de
-                            alcance, riesgos y calidad.</li>
-                        <li><strong>Coaching de Equipos Remotos:</strong> Estrategias para mantener la motivación y
-                            conexión en equipos distribuidos.</li>
-                        <li><strong>Coaching Ágil & Scrum Mastering:</strong> Implementación o mejora de prácticas
-                            Scrum/Kanban.</li>
-                        <li><strong>Mentoría para Product Owners:</strong> Organización y priorización de backlogs,
-                            definición de roadmap y métricas de éxito.</li>
-                        <li><strong>Workshops & Talleres:</strong> Dinámicas de Liberating Structures, técnicas de
-                            comunicación asertiva y liderazgo situacional.</li>
-                    </ul>
+                <div class="coaching-types">
+                    <div class="coaching-card">
+                        <div class="card-icon">🎯</div>
+                        <h4>Acompañamiento Directivo</h4>
+                        <p>Sesiones individuales con líderes para definir visión, metas y plan de acción, con revisiones periódicas para asegurar el avance.</p>
+                    </div>
+
+                    <div class="coaching-card">
+                        <div class="card-icon">🤝</div>
+                        <h4>Colaboración de Equipo</h4>
+                        <p>Talleres interactivos (Liberating Structures, simulaciones, dinámicas de rol) que refuerzan la confianza, el alineamiento estratégico y la resolución de conflictos.</p>
+                    </div>
+
+                    <div class="coaching-card">
+                        <div class="card-icon">⚙️</div>
+                        <h4>Procesos a Medida</h4>
+                        <p>Implementamos Scrum, Kanban u otros marcos, o diseñamos un modelo híbrido propio, con indicadores clave (lead time, ciclo de vida de tareas, nivel de satisfacción) para medir y optimizar el rendimiento.</p>
+                    </div>
+                </div>
+
+                <div class="services-section">
+                    <h3>Nuestro enfoque en 4 pasos</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h4>1. Exploración inicial</h4>
+                            <p>Diagnóstico de procesos, cultura y objetivos de negocio.</p>
+                        </div>
+                        <div class="service-card">
+                            <h4>2. Diseño de la metodología</h4>
+                            <p>Definición de un marco de trabajo adaptado a tus prioridades y recursos.</p>
+                        </div>
+                        <div class="service-card">
+                            <h4>3. Implementación práctica</h4>
+                            <p>Talleres, mentorías y ajustes en vivo dentro de tus proyectos.</p>
+                        </div>
+                        <div class="service-card">
+                            <h4>4. Seguimiento y ajuste</h4>
+                            <p>Monitoreo de KPIs, sesiones de feedback y refinamiento continuo para garantizar la mejora constante.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== PORTFOLIO / CASOS DE ÉXITO ====== -->
-    <section id="portfolio" class="section-body bg-light">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
         <div class="container">
-            <h2>Portafolio & Casos de Éxito</h2>
-            <div class="case-studies-grid">
-                <!-- Caso 1: Gloria AI -->
-                <article class="case-study">
-                    <div class="case-header">
-                        <h3>Gloria AI — Asistente de IA para Calificación de Leads</h3>
-                        <p><em>Abril 2023 – Julio 2024 | Miami, EE. UU.</em></p>
+            <div class="section-header">
+                <h2>Experiencia</h2>
+                <p class="section-subtitle">Casos reales de liderazgo, gestión de proyectos y transformación de equipos en empresas tecnológicas.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- BairesDev Case Study -->
+                <article class="case-study-card">
+                    <div class="case-image">
+                        <img src="images/eric-perfil2024.jpeg" alt="BairesDev Desarrollo de Software">
+                        <div class="case-overlay">
+                            <span class="case-tag">Project Manager</span>
+                        </div>
                     </div>
                     <div class="case-content">
-                        <div class="case-text">
-                            <p>Como <strong>Product Owner</strong> llevé a Gloria AI desde su concepción hasta su
-                                lanzamiento. Gestioné un backlog de 900+ historias de usuario, definí la visión del
-                                producto junto al CEO y lideré un equipo multicultural de desarrolladores y diseñadores.
-                                Presenté la plataforma en <strong>eMerge Americas 2024</strong>.</p>
-                            <ul>
-                                <li>📈 Aumentamos la base de usuarios a más de 1.000 registrados en 2 meses.</li>
-                                <li>⏱️ Resolvimos el 90 % de tickets de soporte en menos de 2 horas.</li>
-                                <li>🤖 Automatización de respuestas de soporte, reduciendo tiempos de atención en 60%.
-                                </li>
-                                <li>🛠️ Diseño y publicación de plugin en el repositorio oficial de WordPress.</li>
-                            </ul>
+                        <div class="case-header">
+                            <h3>BairesDev — Technology Outsourcing Solutions</h3>
+                            <p class="case-period">Septiembre 2024 – Actualidad | Remoto</p>
                         </div>
-                        <div class="case-image">
-                            <img src="images/emerge2024.jpeg"
-                                alt="Placeholder Image">
+                        <p class="case-description">
+                            Como <strong>Project Manager</strong> en BairesDev lidero la planificación, ejecución y
+                            cierre de proyectos para clientes de EE. UU. Coordino un equipo multicultural
+                            (desarrolladores, QA, UI/UX) y sirvo de nexo con stakeholders, garantizando visibilidad y
+                            alineamiento continuo.
+                        </p>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <span class="metric-icon">🚀</span>
+                                <span class="metric-text">Gestión simultánea de 8+ proyectos, asegurando entregas on
+                                    time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">📈</span>
+                                <span class="metric-text">Alto nivel de cumplimiento de KPIs internos/externos</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">🤝</span>
+                                <span class="metric-text">Comunicación fluida con clientes, con reuniones de seguimiento
+                                    semanales y reportes de avance</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">⚙️</span>
+                                <span class="metric-text">Automatización de workflows usando Notion, Make.com, LLMs,
+                                    reduciendo trabajo repetitivo y enfocándome en mantener el equipo/clientes
+                                    satisfechos</span>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Caso 2: Webtronic Labs -->
-                <article class="case-study">
-                    <div class="case-header">
-                        <h3>Webtronic Labs — Optimización de Operaciones & Agile</h3>
-                        <p><em>Noviembre 2022 – Julio 2024 | Miami, EE. UU.</em></p>
+                <!-- Gloria AI Case Study -->
+                <article class="case-study-card">
+                    <div class="case-image">
+                        <img src="images/eric-gloria.png" alt="Gloria AI en eMerge Americas 2024">
+                        <div class="case-overlay">
+                            <span class="case-tag">Product Owner</span>
+                        </div>
                     </div>
                     <div class="case-content">
-                        <div class="case-text">
-                            <p>Como <strong>Project Manager & Staff Manager</strong> implementé metodologías ágiles que
-                                mejoraron la eficiencia del equipo en un 30%. Diseñé un sistema de gestión de proyectos
-                                en Notion que redujo el tiempo administrativo y establecí métricas clave de rendimiento
-                                que aumentaron la productividad general en 50%</p>
-                            <ul>
-                                <li>🏆 Lideré varios equipos productos internos y externos</li>
-                                <li>📊 Implementé un sistema de seguimiento de indicadores de desempeño</li>
-                                <li>🖥️ Definí y documenté SOPs y procedimientos que disminuyeron el tiempo onboarding a
-                                    la mitad</li>
-                            </ul>
+                        <div class="case-header">
+                            <h3>Gloria AI — Asistente de IA para Calificación de Leads</h3>
+                            <p class="case-period">Abril 2023 – Julio 2024 | Miami, EE. UU. (Remoto)</p>
                         </div>
-                        <div class="case-image">
-                            <img src="images/MiamiTech-scaled.jpeg"
-                                alt="Placeholder Image">
+                        <p class="case-description">
+                            Como <strong>Product Owner</strong> llevé a Gloria AI desde su concepción hasta su
+                            lanzamiento. Gestioné un backlog de 900+ items, definí la visión del
+                            producto junto al CEO y lideré un equipo multicultural de desarrolladores y diseñadores.
+                            Presenté la plataforma en <strong>eMerge Americas 2024</strong>.
+                        </p>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <span class="metric-icon">📈</span>
+                                <span class="metric-text">Aumentamos la base de usuarios a más de 1.000 registrados en 2
+                                    meses</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">⏱️</span>
+                                <span class="metric-text">Resolvimos el 90% de tickets de soporte en menos de 2
+                                    horas</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">🤖</span>
+                                <span class="metric-text">Automatización de respuestas de soporte, reduciendo tiempos de
+                                    atención en 60%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">🛠️</span>
+                                <span class="metric-text">Diseño y publicación de plugin en el repositorio oficial de
+                                    WordPress</span>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Caso 3: Zenitx Informática -->
-                <article class="case-study">
-                    <div class="case-header">
-                        <h3>Zenitx Informática — Transformación Digital & COO</h3>
-                        <p><em>Marzo 2020 – Noviembre 2022 | Chile</em></p>
+                <!-- Webtronic Labs Case Study -->
+                <article class="case-study-card">
+                    <div class="case-image">
+                        <img src="images/desktop.jpg" alt="Webtronic Labs Miami Tech">
+                        <div class="case-overlay">
+                            <span class="case-tag">Project Manager</span>
+                        </div>
                     </div>
                     <div class="case-content">
-                        <div class="case-text">
-                            <p>Como <strong>COO</strong> lideré la transición completa al trabajo remoto durante la
-                                pandemia, implementé herramientas colaborativas (Notion, Asana, Slack) y reduje costos
-                                operativos en 15% mediante optimización de procesos. Además, impulsé el desarrollo de
-                                MVPs para nuevas soluciones que incrementaron los ingresos en 20%</p>
-                            <ul>
-                                <li>🔧 Implementé la adopción de Sigue® ERP en clientes, reduciendo tiempos de entrega
-                                </li>
-                                <li>🌐 Desarrollé plataformas web y un blog corporativo que alcanzó más de 11.000 vistas
-                                    mensuales</li>
-                                <li>👥 Capacitación remota a más de 50 colaboradores para manejar nuevas herramientas
-                                    digitales</li>
-                            </ul>
+                        <div class="case-header">
+                            <h3>Webtronic Labs — Optimización de Operaciones & Agile</h3>
+                            <p class="case-period">Noviembre 2022 – Julio 2024 | Miami, EE. UU. (Remoto)</p>
                         </div>
-                        <div class="case-image">
-                            <img src="images/charla-1-scaled.jpg"
-                                alt="Placeholder Image">
+                        <p class="case-description">
+                            Como <strong>Project Manager & Staff Manager</strong> implementé metodologías ágiles que
+                            mejoraron la eficiencia del equipo en un 30%. Diseñé un sistema de gestión de proyectos
+                            en Notion que redujo el tiempo administrativo y establecí métricas clave de rendimiento
+                            que aumentaron la productividad general en 50%.
+                        </p>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <span class="metric-icon">🏆</span>
+                                <span class="metric-text">Lideré varios equipos productos internos y externos</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">📊</span>
+                                <span class="metric-text">Implementé un sistema de seguimiento de indicadores de
+                                    desempeño</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">🖥️</span>
+                                <span class="metric-text">Definí y documenté SOPs y procedimientos que disminuyeron el
+                                    tiempo onboarding a la mitad</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Zenitx Case Study -->
+                <article class="case-study-card">
+                    <div class="case-image">
+                        <img src="images/charla-1-scaled.jpg" alt="Zenitx Informática Transformación Digital">
+                        <div class="case-overlay">
+                            <span class="case-tag">COO</span>
+                        </div>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-header">
+                            <h3>Zenitx Informática — Transformación Digital & COO</h3>
+                            <p class="case-period">Enero 2013 – Noviembre 2022 | Chile (Remoto y presencial)</p>
+                        </div>
+                        <p class="case-description">
+                            Como <strong>COO</strong> lideré la transición completa al trabajo remoto durante la
+                            pandemia, implementé herramientas colaborativas (Notion, Asana, Slack) y reduje costos
+                            operativos en 15% mediante optimización de procesos. Además, impulsé el desarrollo de
+                            MVPs para nuevas soluciones que incrementaron los ingresos en 20%.
+                        </p>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <span class="metric-icon">🔧</span>
+                                <span class="metric-text">Implementé la adopción de Sigue® ERP en clientes, reduciendo
+                                    tiempos de entrega</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">🌐</span>
+                                <span class="metric-text">Desarrollé plataformas web y un blog corporativo que alcanzó
+                                    más de 11.000 vistas mensuales</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-icon">👥</span>
+                                <span class="metric-text">Capacitación remota a más de 50 colaboradores para manejar
+                                    nuevas herramientas digitales</span>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -198,238 +377,381 @@
         </div>
     </section>
 
-    <!-- ====== TESTIMONIOS ====== -->
-    <section id="testimonios" class="section-body bg-medium">
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="section section-light">
         <div class="container">
-            <h2>Testimonios</h2>
-            <div class="testimonials-carousel">
-                <div class="testimonial">
-                    <blockquote>
-                        “Trabajar con Eric fue un privilegio. […] Tiene una gran habilidad para manejar proyectos
-                        complejos y siempre los entrega a tiempo y dentro del presupuesto. […] Además, es una persona
-                        muy agradable, crea un buen ambiente de trabajo y fomenta el respeto y la confianza.”
-                        <br>
-                    </blockquote>
-                    <cite>— Ricardo Montero, Software Engineer (Webtronic Labs), 5 de agosto de 2024</cite>
-                </div>
-
-                <div class="testimonial">
-                    <blockquote>
-                        “Eric entiende muy bien la gestión de proyectos y sabe cómo liderar equipos diversos. […]
-                        Siempre entrega con calidad, dentro del alcance y los plazos. […] Es muy bueno comunicando y
-                        resolviendo problemas. Lo recomiendo con total confianza.”
-                        <br>
-                    </blockquote>
-                    <cite>— María Valentina Cabrera, Software Engineer en Itti Digital (Webtronic Labs), 26 de mayo de
-                        2024</cite>
-                </div>
-
-                <div class="testimonial">
-                    <blockquote>
-                        “Eric es muy trabajador, curioso y ambicioso. […] Tiene una gran visión de producto, desde el
-                        negocio hasta el cliente final. […] Comunica muy bien sus ideas y es muy proactivo. Sería un
-                        gran aporte en cualquier equipo.”
-                        <br>
-                    </blockquote>
-                    <cite>— Garrett Anderson, Senior Product Designer en Trainual (Mentor), 9 de octubre de 2022</cite>
-                </div>
-
-                <div class="testimonial">
-                    <blockquote>
-                        “Eric siempre quiere aprender más y dar lo mejor. […] Es tranquilo, amable y muy fácil de
-                        tratar. […] Tiene lo necesario para ayudar a cualquier equipo a mejorar. Lo recomiendo con
-                        gusto.”
-                        <br>
-                    </blockquote>
-                    <cite>— Vigneshwar Sayeeram, Agile HR Alchemist, 29 de agosto de 2022</cite>
-
-                </div>
-
-                <div class="testimonial">
-                    <blockquote>
-                        “Eric destaca tanto por su parte técnica como por sus habilidades humanas. […] Lidera muy bien,
-                        siempre busca mejorar y comunica con claridad. […] Estoy seguro de que tendrá éxito en cualquier
-                        desafío que asuma.”
-                        <br>
-                    </blockquote>
-                    <cite>— Esteban Luján Ramírez, Estrategia y Business Intelligence en EPM, 16 de agosto de
-                        2022</cite>
-                </div>
+            <div class="section-header">
+                <h2>Testimonios</h2>
+                <p class="section-subtitle">Lo que dicen los profesionales que han trabajado conmigo</p>
             </div>
-            <div class="carousel-nav">
-                <span class="carousel-arrow left">&#9664;</span>
-                <span class="carousel-dot active"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-dot"></span>
-                <span class="carousel-arrow right">&#9654;</span>
+
+            <div class="testimonials-container">
+                <div class="testimonials-carousel" id="testimonialsCarousel">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <blockquote>
+                                Trabajar con Eric fue un privilegio. […] Tiene una gran habilidad para manejar proyectos
+                                complejos y siempre los entrega a tiempo y dentro del presupuesto. […] Además, es una
+                                persona
+                                muy agradable, crea un buen ambiente de trabajo y fomenta el respeto y la confianza.
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Ricardo Montero</h4>
+                                    <p>Software Engineer (Webtronic Labs)</p>
+                                    <p class="date">5 de agosto de 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <blockquote>
+                                Eric entiende muy bien la gestión de proyectos y sabe cómo liderar equipos diversos. […]
+                                Siempre entrega con calidad, dentro del alcance y los plazos. […] Es muy bueno
+                                comunicando y
+                                resolviendo problemas. Lo recomiendo con total confianza.
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>María Valentina Cabrera</h4>
+                                    <p>Software Engineer en Itti Digital (Webtronic Labs)</p>
+                                    <p class="date">26 de mayo de 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <blockquote>
+                                Eric es muy trabajador, curioso y ambicioso. […] Tiene una gran visión de producto,
+                                desde el
+                                negocio hasta el cliente final. […] Comunica muy bien sus ideas y es muy proactivo.
+                                Sería un
+                                gran aporte en cualquier equipo.
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Garrett Anderson</h4>
+                                    <p>Senior Product Designer en Trainual (Mentor)</p>
+                                    <p class="date">9 de octubre de 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <blockquote>
+                                Eric siempre quiere aprender más y dar lo mejor. […] Es tranquilo, amable y muy fácil de
+                                tratar. […] Tiene lo necesario para ayudar a cualquier equipo a mejorar. Lo recomiendo
+                                con
+                                gusto.
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Vigneshwar Sayeeram</h4>
+                                    <p>Agile HR Alchemist</p>
+                                    <p class="date">29 de agosto de 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <blockquote>
+                                Eric destaca tanto por su parte técnica como por sus habilidades humanas. […] Lidera muy
+                                bien,
+                                siempre busca mejorar y comunica con claridad. […] Estoy seguro de que tendrá éxito en
+                                cualquier
+                                desafío que asuma.
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Esteban Luján Ramírez</h4>
+                                    <p>Estrategia y Business Intelligence en EPM</p>
+                                    <p class="date">16 de agosto de 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonials-navigation">
+                    <button class="nav-btn prev-btn" onclick="previousTestimonial()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="testimonials-dots"></div>
+                    <button class="nav-btn next-btn" onclick="nextTestimonial()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== HABILIDADES & COMPETENCIAS ====== -->
-    <section id="habilidades" class="section-body bg-light">
+    <!-- Skills Section -->
+    <section id="habilidades" class="section">
         <div class="container">
-            <h2>Habilidades & Competencias</h2>
-            <div class="skills-grid">
-                <!-- Habilidades -->
+            <div class="section-header">
+                <h2>Habilidades & Competencias</h2>
+                <p class="section-subtitle">Experiencia técnica y habilidades interpersonales para liderar equipos de
+                    alto rendimiento</p>
+            </div>
+
+            <div class="skills-container">
                 <div class="skills-column">
                     <h3>Habilidades Profesionales</h3>
 
-                    <strong>Gestión Ágil</strong>
-                    <ul>
-                        <li>Gestión de Proyectos Ágiles (Scrum, Kanban)</li>
-                        <li>Planificación Estratégica & Roadmaps de Producto</li>
-                        <li>Gestión de Backlog & Priorización</li>
-                    </ul>
-                    <strong>Herramientas</strong>
-                    <ul>
+                    <div class="skill-category">
+                        <h4>Gestión Ágil</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Gestión de Proyectos Ágiles (Scrum, Kanban)</span>
+                            <span class="skill-tag">Planificación Estratégica & Roadmaps de Producto</span>
+                            <span class="skill-tag">Gestión de Backlog & Priorización</span>
+                        </div>
+                    </div>
 
-                        <li>Implementación de Herramientas Colaborativas (Notion, Asana, Slack)</li>
-                    </ul>
-                    <strong>Liderazgo</strong>
-                    <ul>
+                    <div class="skill-category">
+                        <h4>Herramientas</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Implementación de Herramientas Colaborativas (Notion, Asana,
+                                Slack)</span>
+                        </div>
+                    </div>
 
-                        <li>Liderazgo de Equipos Remotos & Coaching</li>
-                    </ul>
-                    <strong>Tecnología</strong>
-                    <ul>
+                    <div class="skill-category">
+                        <h4>Liderazgo</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Liderazgo de Equipos Remotos & Coaching</span>
+                        </div>
+                    </div>
 
-                        <li>Transformación Digital & Modernización de Stacks Tecnológicos</li>
-                        <li>Integración de Inteligencia Artificial & Automatización</li>
-                        <li>Desarrollo Frontend & Experiencia de Usuario</li>
-                        <li>Configuración de Servidores Linux & Redes de Datos</li>
-                    </ul>
+                    <div class="skill-category">
+                        <h4>Tecnología</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Transformación Digital & Modernización de Stacks Tecnológicos</span>
+                            <span class="skill-tag">Integración de Inteligencia Artificial & Automatización</span>
+                            <span class="skill-tag">Desarrollo Frontend & Experiencia de Usuario</span>
+                            <span class="skill-tag">Configuración de Servidores Linux & Redes de Datos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-column">
                     <h3>Habilidades Personales</h3>
-                    <strong>Interpersonales</strong>
-                    <ul>
-                        <li>Liderazgo Empático & Comunicación Asertiva</li>
-                    </ul>
-                    <strong>Resolución</strong>
-                    <ul>
-                        <li>Resolución de Conflictos & Negociación</li>
-                    </ul>
-                    <strong>Enfoque</strong>
-                    <ul>
-                        <li>Enfoque en Resultados & Mejora Continua</li>
-                        <li>Orientación al Cliente & Visión de Negocio</li>
-                    </ul>
-                    <strong>Colaboración</strong>
-                    <ul>
-                        <li>Adaptabilidad & Manejo del Cambio</li>
-                        <li>Trabajo en Equipo & Colaboración Multicultural</li>
-                    </ul>
-                    <strong>Organización</strong>
-                    <ul>
-                        <li>Proactividad & Toma de Decisiones</li>
-                        <li>Organización & Gestión Eficiente del Tiempo</li>
-                        <li>Coaching Motivacional & Mentoría</li>
-                    </ul>
+
+                    <div class="skill-category">
+                        <h4>Interpersonales</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Liderazgo Empático & Comunicación Asertiva</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Resolución</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Resolución de Conflictos & Negociación</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Enfoque</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Enfoque en Resultados & Mejora Continua</span>
+                            <span class="skill-tag">Orientación al Cliente & Visión de Negocio</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Colaboración</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Adaptabilidad & Manejo del Cambio</span>
+                            <span class="skill-tag">Trabajo en Equipo & Colaboración Multicultural</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Organización</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Proactividad & Toma de Decisiones</span>
+                            <span class="skill-tag">Organización & Gestión Eficiente del Tiempo</span>
+                            <span class="skill-tag">Coaching Motivacional & Mentoría</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== CONTACTO ====== -->
-    <section id="contacto" class="section-body bg-dark">
+    <!-- Contact Section -->
+    <section id="contacto" class="section section-dark">
         <div class="container">
-            <h2>¿Necesitas ayuda en la gestión de tus equipos/projectos de software?</h2>
+            <div class="section-header">
+                <h2>¿Necesitas ayuda en la gestión de tus equipos/proyectos de software?</h2>
+                <p class="section-subtitle">Si deseas mejorar la gestión de proyectos, potenciar a tus equipos remotos o
+                    recibir coaching individual, estoy aquí para ayudarte.</p>
+            </div>
+
             <div class="contact-content">
-                <div class="contact-text">
-                    <p>Si deseas mejorar la gestión de proyectos, potenciar a tus equipos remotos o recibir coaching individual,
-                        estoy aquí para ayudarte.</p>
+                <div class="contact-card">
+                    <h3>Hablemos de tu proyecto</h3>
+                    <p>Cuéntame sobre tus desafíos y exploremos cómo puedo ayudarte a alcanzar tus objetivos.</p>
+                    <a href="https://ericconcha.notion.site/182db42c02ff80a595a1e25a36fcfc50?pvs=105"
+                        class="btn-primary">
+                        <span>Cuéntame lo que necesitas</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="contact-options">
-                    <p>Contáctame</p>
-                    <a href="https://ericconcha.notion.site/182db42c02ff80a595a1e25a36fcfc50?pvs=105">Cuéntame lo que necesitas</a>
-                </div>
-                <div>
-                    <p>Sígueme en:<br>
-                    <a href="https://www.linkedin.com/in/ericconcha/" target="_blank">LinkedIn</a>, <a href="https://ericconcha.substack.com/" target="_blank">Substack</a>
+
+                <div class="contact-links">
+                    <h3>Sígueme en:</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/ericconcha/" target="_blank" class="social-link">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://ericconcha.substack.com/" target="_blank" class="social-link">
+                            <span>Substack</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== FOOTER ====== -->
-    <footer>
-        <div class="footer-container">
-            <p>© <span id="year"></span> Eric Concha. Todos los derechos reservados.</p>
-            <script>
-                document.getElementById('year').textContent = new Date().getFullYear();
-            </script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logos/ec-logo-white.png" alt="Eric Concha Logo">
+                </div>
+                <p>© <span id="year"></span> Eric Concha. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
+
     <script>
-        const carousel = document.querySelector('.testimonials-carousel');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const testimonials = document.querySelectorAll('.testimonial');
-        const leftArrow = document.querySelector('.carousel-arrow.left');
-        const rightArrow = document.querySelector('.carousel-arrow.right');
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        const isMobile = () => window.innerWidth <= 768;
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
 
-        carousel.addEventListener('scroll', () => {
-            let activeIndex = 0;
-            testimonials.forEach((testimonial, index) => {
-                const testimonialRect = testimonial.getBoundingClientRect();
-                // Determine active index based on which testimonial is most visible
-                if (testimonialRect.left >= 0 && testimonialRect.left < window.innerWidth) {
-                     if (testimonialRect.left < window.innerWidth / 2) { // Consider the testimonial in the first half of the screen
-                        activeIndex = index;
-                    }
-                }
-            });
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
             });
         });
 
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                const scrollAmount = testimonials[index].offsetLeft - carousel.offsetLeft;
-                carousel.scrollTo({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            });
+        // Testimonials carousel
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const testimonialDots = document.querySelector('.testimonials-dots');
+
+        // Create dots
+        testimonials.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('testimonial-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => showTestimonial(index));
+            testimonialDots.appendChild(dot);
         });
 
-        leftArrow.addEventListener('click', () => {
-            const scrollAmount = isMobile() ? testimonials[0].offsetWidth + 20 : carousel.offsetWidth; // Scroll by testimonial width + margin on mobile
-            carousel.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
-        });
+        function showTestimonial(index) {
+            const carousel = document.getElementById('testimonialsCarousel');
+            const dots = document.querySelectorAll('.testimonial-dot');
 
-        rightArrow.addEventListener('click', () => {
-             const scrollAmount = isMobile() ? testimonials[0].offsetWidth + 20 : carousel.offsetWidth; // Scroll by testimonial width + margin on mobile
-            carousel.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        });
+            currentTestimonial = index;
 
-        let currentIndex = 0;
-        const totalTestimonials = testimonials.length;
+            const translateX = -index * 100;
+            carousel.style.transform = `translateX(${translateX}%)`;
 
-        function autoScrollCarousel() {
-            currentIndex = (currentIndex + 1) % totalTestimonials;
-            const scrollAmount = testimonials[currentIndex].offsetLeft - carousel.offsetLeft;
-            carousel.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
             });
         }
 
-        setInterval(autoScrollCarousel, 5000); // Scroll every 5 seconds
+        function nextTestimonial() {
+            const nextIndex = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(nextIndex);
+        }
+
+        function previousTestimonial() {
+            const prevIndex = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(prevIndex);
+        }
+
+        // Auto-rotate testimonials
+        setInterval(nextTestimonial, 6000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.case-study-card, .coaching-card, .service-card, .testimonial-card, .skill-category').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 
