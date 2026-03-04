@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICS to Google Calendar — Eric Concha</title>
+    <link rel="stylesheet" href="../style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tool-container {
+            max-width: 700px;
+            margin: 4rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .tool-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .drop-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2rem;
+            text-align: center;
+            transition: var(--transition-normal);
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .drop-zone:hover,
+        .drop-zone.drag-over {
+            border-color: var(--primary-color);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .drop-zone-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            opacity: 0.7;
+        }
+
+        .drop-zone-text {
+            font-size: 1.2rem;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .drop-zone-subtext {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .result-container {
+            margin-top: 2.5rem;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+        }
+
+        .result-title {
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-primary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .result-value {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: var(--text-white);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-link {
+            flex: 1;
+            justify-content: center;
+        }
+
+        .error-message {
+            color: #ef4444;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        #fileInput {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tool-container">
+            <div class="tool-header">
+                <h1 class="text-gradient">ICS Converter</h1>
+                <p>Genera links de Google Calendar desde tus archivos .ics</p>
+            </div>
+
+            <div class="drop-zone" id="dropZone">
+                <span class="drop-zone-icon">📅</span>
+                <p class="drop-zone-text">Arrastra tu archivo .ics aquí</p>
+                <p class="drop-zone-subtext">o haz clic para seleccionar uno de tu equipo</p>
+                <input type="file" id="fileInput" accept=".ics">
+            </div>
+
+            <div id="error" class="error-message"></div>
+
+            <div class="result-container" id="resultContainer">
+                <div class="result-card">
+                    <div class="result-title">Evento</div>
+                    <div id="resSummary" class="result-value"></div>
+                </div>
+                <div class="result-card">
+                    <div class="result-title">Fecha / Hora Local</div>
+                    <div id="resDate" class="result-value"></div>
+                </div>
+                <div class="result-card">
+                    <div class="result-title">Descripción</div>
+                    <div id="resDesc" class="result-value"
+                        style="white-space: pre-wrap; font-size: 0.95rem; color: var(--text-light); max-height: 200px; overflow-y: auto; padding-right: 10px;">
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a id="gcalLink" href="#" target="_blank" class="btn-primary btn-link">
+                        <span>Añadir a Google Calendar</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const resultContainer = document.getElementById('resultContainer');
+        const errorDiv = document.getElementById('error');
+
+        // Click to upload
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        // Drag & Drop events
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file) handleFile(file);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) handleFile(file);
+        });
+
+        function handleFile(file) {
+            if (!file.name.endsWith('.ics')) {
+                showError('Por favor selecciona un archivo .ics válido.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const content = e.target.result;
+                processICS(content);
+            };
+            reader.onerror = () => showError('Error al leer el archivo.');
+            reader.readAsText(file);
+        }
+
+        function showError(msg) {
+            errorDiv.style.display = 'block';
+            errorDiv.textContent = msg;
+            resultContainer.style.display = 'none';
+        }
+
+        function unescapeICS(str) {
+            if (!str) return '';
+            return str
+                .replace(/\\,/g, ',')
+                .replace(/\\;/g, ';')
+                .replace(/\\n/g, '\n')
+                .replace(/\\N/g, '\n')
+                .replace(/\\\\/g, '\\');
+        }
+
+        function parseICSDate(icsDateString) {
+            if (!icsDateString) return null;
+            
+            const year = parseInt(icsDateString.substring(0, 4), 10);
+            const month = parseInt(icsDateString.substring(4, 6), 10) - 1;
+            const day = parseInt(icsDateString.substring(6, 8), 10);
+            let hour = 0, minute = 0, second = 0;
+            let isUTC = false;
+            
+            if (icsDateString.includes('T')) {
+                const timePart = icsDateString.split('T')[1];
+                hour = parseInt(timePart.substring(0, 2), 10) || 0;
+                minute = parseInt(timePart.substring(2, 4), 10) || 0;
+                second = parseInt(timePart.substring(4, 6), 10) || 0;
+                isUTC = timePart.includes('Z');
+            } else if (icsDateString.endsWith('Z')) {
+                isUTC = true;
+            }
+            
+            if (isUTC) {
+                return new Date(Date.UTC(year, month, day, hour, minute, second));
+            } else {
+                return new Date(year, month, day, hour, minute, second);
+            }
+        }
+
+        function processICS(content) {
+            try {
+                // Handling line folding
+                const lines = content.replace(/\r\n\s/g, '').replace(/\n\s/g, '').split(/\r?\n/);
+                
+                let data = {};
+                let currentKey = '';
+                
+                // We'll iterate through lines. Some might be folded without spaces, but usually they start with space.
+                // Our regex stripped spaces. If some description is split across lines, we need to handle it properly.
+                
+                // Let's do a better fold handling instead of regex replace.
+                const originalLines = content.split(/\r?\n/);
+                const unfoldedLines = [];
+                for (let i = 0; i < originalLines.length; i++) {
+                    const line = originalLines[i];
+                    if (line.startsWith(' ') || line.startsWith('\t')) {
+                        if (unfoldedLines.length > 0) {
+                            unfoldedLines[unfoldedLines.length - 1] += line.substring(1);
+                        }
+                    } else {
+                        unfoldedLines.push(line);
+                    }
+                }
+
+                unfoldedLines.forEach(line => {
+                    const colonIndex = line.indexOf(':');
+                    if (colonIndex === -1) return;
+                    
+                    const key = line.substring(0, colonIndex).split(';')[0]; // Handle parameters like ;VALUE=DATE-TIME
+                    const value = line.substring(colonIndex + 1);
+                    
+                    data[key] = value;
+                });
+
+                if (!data.SUMMARY || !data.DTSTART) {
+                    throw new Error('El archivo no parece contener un evento válido.');
+                }
+
+                const summary = unescapeICS(data.SUMMARY);
+                const description = unescapeICS(data.DESCRIPTION || '');
+                const location = unescapeICS(data.LOCATION || '');
+                const dtStartStr = data.DTSTART.replace(/[^0-9TZ]/g, '');
+                const dtEndStr = (data.DTEND || data.DTSTART).replace(/[^0-9TZ]/g, '');
+
+                const startDate = parseICSDate(dtStartStr);
+                const endDate = parseICSDate(dtEndStr);
+
+                // Format for GCal: YYYYMMDDTHHMMSSZ/YYYYMMDDTHHMMSSZ
+                const dates = `${dtStartStr}/${dtEndStr}`;
+
+                // Display results
+                document.getElementById('resSummary').textContent = summary;
+                
+                let dateDisplay = '';
+                if (startDate) {
+                    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                    dateDisplay = startDate.toLocaleString('es-ES', dateOptions);
+                    if (endDate && endDate.getTime() !== startDate.getTime()) {
+                        dateDisplay += ` - ${endDate.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`;
+                    }
+                } else {
+                    dateDisplay = 'Fecha no disponible';
+                }
+                
+                // Capitalize first letter of Date Display
+                if (dateDisplay.length > 0) {
+                    dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
+                }
+                
+                document.getElementById('resDate').textContent = dateDisplay;
+                document.getElementById('resDesc').textContent = description || 'Sin descripción detallada.';
+                
+                const gcalBase = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+                const gcalLink = `${gcalBase}&text=${encodeURIComponent(summary)}&dates=${dates}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}`;
+                
+                document.getElementById('gcalLink').href = gcalLink;
+                
+                errorDiv.style.display = 'none';
+                resultContainer.style.display = 'block';
+            } catch (err) {
+                console.error(err);
+                showError('Error al procesar el archivo: ' + err.message);
+            }
+        }
+    </script>
+</body>
+
+</html>
