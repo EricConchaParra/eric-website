@@ -834,6 +834,168 @@ a:hover {
     margin: 0;
 }
 
+/* ===== TOOL CTA CARD (PMToolkit) ===== */
+.tool-cta-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    transition: var(--transition-normal);
+}
+
+.tool-cta-card:hover {
+    border-color: rgba(100, 160, 255, 0.3);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.12);
+}
+
+.tool-cta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 0.4rem 1.25rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #93c5fd;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 2rem 2rem 0;
+    border-radius: 50px;
+}
+
+.tool-cta-dot {
+    width: 7px;
+    height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: ctaDotBlink 2s ease-in-out infinite;
+}
+
+@keyframes ctaDotBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.tool-cta-body {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    padding: 2rem 2.5rem 2rem;
+}
+
+.tool-cta-text h3 {
+    color: #fff;
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    margin-bottom: 0.4rem;
+}
+
+.tool-cta-tagline {
+    color: #93c5fd;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem !important;
+}
+
+.tool-cta-text > p:last-of-type {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 1.5rem !important;
+}
+
+.tool-cta-text > p strong {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.tool-cta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tool-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    transition: var(--transition-fast);
+}
+
+.tool-pill:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+}
+
+.tool-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.tool-cta-main {
+    background: linear-gradient(135deg, #3b82f6, #6366f1) !important;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35) !important;
+    white-space: nowrap;
+    font-size: 1.05rem !important;
+    padding: 1rem 2rem !important;
+}
+
+.tool-cta-main:hover {
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.55) !important;
+}
+
+.tool-cta-github {
+    background: rgba(255,255,255,0.07) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    color: rgba(255,255,255,0.85) !important;
+    text-align: center;
+    justify-content: center;
+}
+
+.tool-cta-github:hover {
+    background: rgba(255,255,255,0.13) !important;
+    color: #fff !important;
+}
+
+.tool-cta-trust {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 2.5rem 1.75rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .tool-cta-body {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .tool-cta-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .tool-cta-main,
+    .tool-cta-github {
+        flex: 1;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
 /* ===== TESTIMONIALS SECTION ===== */
 .testimonials-container {
     max-width: 800px;

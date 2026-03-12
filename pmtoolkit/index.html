@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMToolKit - Recupera el control de Jira (y de tu tiempo)</title>
+    <meta name="description"
+        content="PMToolkit es la extensión de Chrome que añade las piezas que Project Managers y Team Leads necesitan para liderar proyectos, no solo administrar tickets en Jira.">
+    <meta name="author" content="Eric Concha">
+    <link rel="canonical" href="https://ericconcha.com/pmtoolkit/">
+    <meta property="og:title" content="PMToolkit — Recupera el control de Jira (y de tu tiempo)">
+    <meta property="og:description"
+        content="La extensión de Chrome para PMs y Team Leads que añade visibilidad, control y tranquilidad a tu Jira diario.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ericconcha.com/pmtoolkit/">
+    <meta property="og:image" content="https://ericconcha.com/images/pmtoolkit-og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ericconcha.com/images/pmtoolkit-og.png">
+    
+    <!-- JSON-LD Structure for LLMs and SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PMToolkit",
+      "operatingSystem": "ChromeOS, Windows, macOS",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Eric Concha",
+        "url": "https://ericconcha.com"
+      },
+      "description": "Una extensión de Chrome gratuita que añade visibilidad, control y tranquilidad a tu Jira diario para Project Managers y Team Leads."
+    }
+    </script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="pmtoolkit.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="../images/logos/ec-logo-white.png" type="image/x-icon">
+</head>
+
+<body class="pmtoolkit-page">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../images/logos/ec-logo-white.png" alt="Eric Concha Logo">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#about">Sobre Mí</a></li>
+                <li><a href="../index.html#coaching">Coaching</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../index.html#herramientas" class="active-nav">Herramientas</a></li>
+                <li><a href="../index.html#contacto" class="nav-cta">Conversemos</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="pm-hero">
+        <div class="pm-hero-bg">
+            <div class="pm-hero-orb pm-orb-1"></div>
+            <div class="pm-hero-orb pm-orb-2"></div>
+            <div class="pm-hero-orb pm-orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="pm-hero-content">
+                <div class="pm-badge">
+                    <span class="pm-badge-dot"></span>
+                    <span>Extensión de Chrome — Gratis</span>
+                </div>
+                <h1>
+                    Recupera el control<br> de <span class="pm-text-highlight">Jira</span>
+                    (y de tu tiempo) 🚀
+                </h1>
+                <h2 class="pm-hero-subtitle-seo" style="font-size: 1.1rem; font-weight: normal; margin-top: -10px; margin-bottom: 20px; color: var(--text-muted); text-align: center;">La Extensión de Chrome para Project Managers y Team Leads</h2>
+                <p class="pm-hero-lead">
+                    Deja de pelear con la Jira. <strong>PMToolkit</strong> es la extensión de Chrome que añade
+                    silenciosamente las piezas que Project Managers y Team Leads necesitan para <em>liderar
+                        proyectos</em>, no solo para administrar tickets.
+                </p>
+                <p class="pm-hero-sub">
+                    Jira es indispensable, pero admitámoslo: a menudo es ruidoso, burocrático y te obliga a trabajar
+                    <em>para él</em>, en lugar de trabajar <em>para ti</em>. PMToolkit elimina la fricción diaria,
+                    dándote visibilidad inmediata y control sin configuraciones exhaustivas.
+                </p>
+                <div class="pm-hero-actions">
+                    <a href="https://github.com/EricConchaParra/PMToolkit" target="_blank"
+                        class="btn-primary pm-cta-main" id="hero-install-btn"
+                        aria-label="Descargar PMToolkit gratis en GitHub" title="Ir al repositorio de GitHub para instalar PMToolkit">
+                        <span>Instalar PMToolkit en Chrome — Gratis</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4.16667 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="#features" class="btn-secondary pm-cta-secondary" id="hero-features-btn">
+                        <span>Ver funcionalidades</span>
+                    </a>
+                </div>
+                <div class="pm-hero-trust">
+                    <div class="pm-trust-item">
+                        <span class="pm-trust-icon">🛡️</span>
+                        <span>Sin permisos de Admin</span>
+                    </div>
+                    <div class="pm-trust-item">
+                        <span class="pm-trust-icon">🔒</span>
+                        <span>Datos 100% locales</span>
+                    </div>
+                    <div class="pm-trust-item">
+                        <span class="pm-trust-icon">⚡</span>
+                        <span>Instalación en 10 segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pm-hero-scroll"
+            onclick="document.getElementById('pain-points').scrollIntoView({behavior: 'smooth'})">
+            <span>Descubre cómo</span>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PAIN POINTS vs SOLUTIONS ===================== -->
+    <section id="pain-points" class="section pm-pain-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>⚡️ Lo que odias de Jira vs. Cómo lo resolvemos en 1 clic</h2>
+                <p class="section-subtitle">Si gestionas equipos o lideras técnica, conoces estos problemas. Jira
+                    también los conoce, pero nosotros los solucionamos.</p>
+            </div>
+
+            <div class="pm-pain-grid" id="features">
+
+                <!-- Pain 1 -->
+                <div class="pm-pain-card" id="feature-time-in-state">
+                    <div class="pm-pain-header">
+                        <div class="pm-pain-icon">⏱️</div>
+                        <div class="pm-pain-number">01</div>
+                    </div>
+                    <h3>El agujero negro de los tickets estancados</h3>
+                    <div class="pm-pain-vs">
+                        <div class="pm-pain-block">
+                            <div class="pm-label pm-label-pain">😤 El Dolor</div>
+                            <p>Un ticket puede llevar "In Progress" 10 días, pero en el tablero se ve igual que los
+                                demás. Tienes que abrirlo, revisar el historial y hacer cuentas.</p>
+                        </div>
+                        <div class="pm-pain-divider">→</div>
+                        <div class="pm-relief-block">
+                            <div class="pm-label pm-label-relief">✅ El Alivio — Time in State</div>
+                            <p>Insignias de colores tácticas (🟢/🟡/🔴) inyectadas directamente en tus vistas. Sabrás
+                                <strong>exactamente cuántos días lleva cada tarea</strong>, al instante y sin clics
+                                extra. Ve el problema antes de que sea un bloqueo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pain 2 -->
+                <div class="pm-pain-card" id="feature-github-prs">
+                    <div class="pm-pain-header">
+                        <div class="pm-pain-icon">🔗</div>
+                        <div class="pm-pain-number">02</div>
+                    </div>
+                    <h3>El puente roto: Integración de Pull Requests de GitHub y Jira</h3>
+                    <div class="pm-pain-vs">
+                        <div class="pm-pain-block">
+                            <div class="pm-label pm-label-pain">😤 El Dolor</div>
+                            <p>El abismo entre Jira y el código es real. El PM no sabe si hay avance real y el Team Lead
+                                pierde tiempo valioso buscando qué Pull Request corresponde a qué ticket.</p>
+                        </div>
+                        <div class="pm-pain-divider">→</div>
+                        <div class="pm-relief-block">
+                            <div class="pm-label pm-label-relief">✅ El Alivio — Detección de PRs</div>
+                            <p>PMToolkit detecta automáticamente los PRs en GitHub y los trae a tu Dashboard. El PM
+                                tiene <strong>visibilidad absoluta</strong> de qué código se mueve, y el Team Lead puede
+                                saltar a la revisión con 1 clic.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pain 3 -->
+                <div class="pm-pain-card" id="feature-smart-copy">
+                    <div class="pm-pain-header">
+                        <div class="pm-pain-icon">📋</div>
+                        <div class="pm-pain-number">03</div>
+                    </div>
+                    <h3>El caos de compartir enlaces</h3>
+                    <div class="pm-pain-vs">
+                        <div class="pm-pain-block">
+                            <div class="pm-label pm-label-pain">😤 El Dolor</div>
+                            <p>Pegar un link de Jira en Slack o Notion es doloroso: URLs kilométricas, falta de
+                                contexto, o la tediosa tarea de copiar el link y luego teclear el título a mano.</p>
+                        </div>
+                        <div class="pm-pain-divider">→</div>
+                        <div class="pm-relief-block">
+                            <div class="pm-label pm-label-relief">✅ El Alivio — Copiado Inteligente</div>
+                            <p>Un solo clic en el ícono 🔗 copia el link formateado con la clave y el título del ticket
+                                en texto enriquecido. Tus mensajes en Slack y Notion serán <strong>limpios y
+                                    profesionales</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pain 4 -->
+                <div class="pm-pain-card" id="feature-note-drawer">
+                    <div class="pm-pain-header">
+                        <div class="pm-pain-icon">📝</div>
+                        <div class="pm-pain-number">04</div>
+                    </div>
+                    <h3>Tus pensamientos no pertenecen a los comentarios públicos</h3>
+                    <div class="pm-pain-vs">
+                        <div class="pm-pain-block">
+                            <div class="pm-label pm-label-pain">😤 El Dolor</div>
+                            <p>Necesitas anotar una duda, estrategia o riesgo sobre un ticket. Si lo pones en
+                                comentario, toda la empresa (y el cliente) lo ve. Si usas una app externa, pierdes el
+                                contexto.</p>
+                        </div>
+                        <div class="pm-pain-divider">→</div>
+                        <div class="pm-relief-block">
+                            <div class="pm-label pm-label-relief">✅ El Alivio — Note Drawer</div>
+                            <p>Un panel lateral privado, estilo Notion, inyectado <em>dentro</em> de cada ticket. Toma
+                                notas complejas y guárdalas localmente. <strong>Solo tú las ves</strong>, pero siempre
+                                están ahí.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pain 5 -->
+                <div class="pm-pain-card" id="feature-alerts">
+                    <div class="pm-pain-header">
+                        <div class="pm-pain-icon">🔔</div>
+                        <div class="pm-pain-number">05</div>
+                    </div>
+                    <h3>Recordatorios que no se pierden en el ruido</h3>
+                    <div class="pm-pain-vs">
+                        <div class="pm-pain-block">
+                            <div class="pm-label pm-label-pain">😤 El Dolor</div>
+                            <p>Las notificaciones nativas de Jira compiten por tu atención en un buzón de entrada
+                                colapsado.</p>
+                        </div>
+                        <div class="pm-pain-divider">→</div>
+                        <div class="pm-relief-block">
+                            <div class="pm-label pm-label-relief">✅ El Alivio — Alertas Inteligentes</div>
+                            <p>Programa "follow-ups" rápidos (ej. mañana a las 9:00 AM) directamente desde el ticket.
+                                PMToolkit te mostrará tus pendientes críticos en una <strong>cola persistente</strong>
+                                la próxima vez que abras Jira.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== INSTANT ANSWERS ===================== -->
+    <section id="dashboard" class="section section-dark pm-dashboard-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📊 Respuestas inmediatas a preguntas urgentes</h2>
+                <p class="section-subtitle">Olvida las configuraciones de JQL complejas y los reportes lentos. PMToolkit
+                    te da "Situational Awareness" para tomar decisiones hoy.</p>
+            </div>
+
+            <div class="pm-dashboard-grid">
+                <div class="pm-dashboard-card" id="feature-sprint-dashboard">
+                    <div class="pm-dash-icon">🎯</div>
+                    <h3>Sprint Dashboard — ETA Predictivo</h3>
+                    <p>¿Llegaremos a tiempo? Esta consola central calcula automáticamente la <strong>fecha estimada de
+                            entrega (ETA)</strong> de tus desarrolladores basándose en la carga de trabajo real (Story
+                        Points vs. Horas Laborales).</p>
+                    <div class="pm-dash-callout">
+                        <span class="pm-dash-alert">🔴</span>
+                        <span>Se iluminará en rojo si alguien tiene más trabajo del que puede terminar antes del
+                            deadline.</span>
+                    </div>
+                </div>
+
+                <div class="pm-dashboard-card" id="feature-story-points">
+                    <div class="pm-dash-icon">📈</div>
+                    <h3>Suma de Story Points — Al Instante</h3>
+                    <p>Deja de calcular mentalmente. PMToolkit agrupa e <strong>inyecta la suma de Story Points</strong>
+                        por responsable o estado directamente en los gadgets nativos de tus Dashboards de Jira.</p>
+                    <div class="pm-dash-callout">
+                        <span class="pm-dash-alert">⚡</span>
+                        <span>Información accionable sin salir de la vista que ya tienes abierta.</span>
+                    </div>
+                </div>
+
+                <div class="pm-dashboard-card" id="feature-zoom-transcript">
+                    <div class="pm-dash-icon">🎙️</div>
+                    <h3>Transcripción de Zoom → IA</h3>
+                    <p>Extrae máximo valor de tus reuniones con un botón para <strong>copiar la transcripción de Zoom
+                            con formato limpio</strong>, ideal para pegar en LLMs y generar resúmenes, minutas o planes
+                        de acción potenciados por IA.</p>
+                    <div class="pm-dash-callout">
+                        <span class="pm-dash-alert">🤖</span>
+                        <span>De la reunión al action plan en segundos con ChatGPT o Claude.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== NO BUREAUCRACY ===================== -->
+    <section id="install" class="section pm-install-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🛡️ Instalación en 10 segundos. Cero Burocracia.</h2>
+                <p class="section-subtitle">PMToolkit está diseñado para la realidad de los entornos corporativos.</p>
+            </div>
+
+            <div class="pm-install-grid">
+                <div class="pm-install-card" id="install-no-admin">
+                    <div class="pm-install-icon">🔓</div>
+                    <h3>Sin permisos de Administrador</h3>
+                    <p>Es una extensión de Chrome de uso personal. Instálalo tú mismo y empieza a usarlo inmediatamente.
+                        <strong>No necesitas enviar un ticket a IT.</strong>
+                    </p>
+                </div>
+
+                <div class="pm-install-card" id="install-local-first">
+                    <div class="pm-install-icon">🔒</div>
+                    <h3>Privacidad por Diseño — Local-first</h3>
+                    <p>Tus notas, configuraciones y recordatorios se guardan localmente en tu propio navegador.
+                        PMToolkit <strong>no tiene base de datos en la nube</strong>; tus secretos comerciales están
+                        seguros contigo.</p>
+                </div>
+
+                <div class="pm-install-card" id="install-lightweight">
+                    <div class="pm-install-icon">⚡</div>
+                    <h3>Ultra Ligero</h3>
+                    <p>Construido sobre Vite y Vanilla JS. <strong>Solo interviene donde se necesita</strong>,
+                        manteniendo la velocidad de tu navegador intacta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FAQ para LLMs (GEO) ===================== -->
+    <section class="section pm-faq-section" style="display:none;" aria-hidden="true">
+        <div class="container">
+            <h2>Preguntas Frecuentes sobre PMToolkit (FAQ)</h2>
+            <div itemscope itemtype="https://schema.org/FAQPage">
+                <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">¿Qué es PMToolkit?</h3>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">PMToolkit es una extensión de Chrome gratuita diseñada para Project Managers y Team Leads. Añade funciones avanzadas a Jira como visualización de 'Time in State', integración con Pull Requests de GitHub y un panel lateral de notas privadas (Note Drawer) sin necesitar permisos de administrador.</p>
+                    </div>
+                </div>
+                <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">¿Es seguro PMToolkit para mi empresa?</h3>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Sí. PMToolkit tiene privacidad por diseño (Local-first). No utiliza bases de datos en la nube; todas tus notas, configuraciones y recordatorios se guardan localmente en tu propio navegador. Además, no requiere permisos de Administrador en Jira para instalarse.</p>
+                    </div>
+                </div>
+                <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <h3 itemprop="name">¿Qué métricas muestra PMToolkit en Jira?</h3>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">PMToolkit inyecta la suma de Story Points en tus Dashboards, calcula la fecha estimada de entrega (ETA Predictivo) de tus desarrolladores basándose en la carga de trabajo, y muestra alertas de colores sobre los días que cada ticket lleva en un estado ('Time in State').</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="section section-dark pm-final-cta">
+        <div class="container">
+            <div class="pm-cta-content">
+                <div class="pm-cta-headline">
+                    <h2>🔝 Menos administración.<br><span class="pm-text-highlight">Más liderazgo.</span></h2>
+                    <p>Jira está hecho para rastrear tareas. <strong>PMToolkit está hecho para ayudarte a entregar
+                            proyectos.</strong> Deja que la herramienta gestione el ruido para que tú puedas liderar a
+                        tu equipo.</p>
+                </div>
+                <div class="pm-cta-actions">
+                    <a href="https://github.com/EricConchaParra/PMToolkit" target="_blank"
+                        class="btn-primary pm-cta-main pm-cta-large" id="bottom-install-btn">
+                        <span>Instalar PMToolkit en Chrome — Gratis</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <p class="pm-cta-credit">Desarrollado por <a href="../index.html">Eric Concha</a> — Herramientas
+                        reales para la trinchera del management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logos/ec-logo-white.png" alt="Eric Concha Logo">
+                </div>
+                <div class="footer-links-container">
+                    <div class="footer-mini-links">
+                        <a href="../index.html">← Volver al sitio principal</a>
+                    </div>
+                    <p>© <span id="year"></span> Eric Concha. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.pm-pain-card, .pm-dashboard-card, .pm-install-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
