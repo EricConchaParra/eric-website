@@ -1258,16 +1258,17 @@ body {
     border-radius: var(--radius-md); padding: 0.8rem 1.1rem;
     font-size: 0.9rem; font-weight: 600; color: #FCD34D; margin-bottom: 1.6rem; line-height: 1.5;
 }
-.template-modal-buttons { display: flex; gap: 1rem; width: 100%; }
+.template-modal-buttons { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
+.template-action-buttons { display: flex; gap: 1rem; width: 100%; }
 .btn-template-cancel {
-    flex: 1; padding: 0.8rem 1.2rem; border-radius: var(--radius-md);
+    width: 100%; padding: 0.8rem 1.2rem; border-radius: var(--radius-md);
     border: 1px solid var(--border-subtle); background: transparent;
     color: var(--text-secondary); font-family: var(--font-family);
     font-size: 1rem; font-weight: 600; cursor: pointer; transition: all var(--transition-fast);
 }
 .btn-template-cancel:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); }
 .btn-template-download {
-    flex: 2; padding: 0.8rem 1.5rem; border-radius: var(--radius-md); border: none;
+    flex: 1; padding: 0.8rem 1.5rem; border-radius: var(--radius-md); border: none;
     background: linear-gradient(135deg, #FBBF24, #D97706); color: #1a1a2e;
     font-family: var(--font-family); font-size: 1.05rem; font-weight: 800;
     cursor: pointer; transition: all var(--transition-fast);
@@ -1276,7 +1277,7 @@ body {
 .btn-template-download:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(251, 191, 36, 0.45); }
 .btn-template-download:active { transform: scale(0.97); }
 .btn-template-copy {
-    flex: 2; padding: 0.8rem 1.5rem; border-radius: var(--radius-md); border: none;
+    flex: 1; padding: 0.8rem 1.5rem; border-radius: var(--radius-md); border: none;
     background: linear-gradient(135deg, #2DD4BF, #0891B2); color: #fff;
     font-family: var(--font-family); font-size: 1.05rem; font-weight: 800;
     cursor: pointer; transition: all var(--transition-fast);
