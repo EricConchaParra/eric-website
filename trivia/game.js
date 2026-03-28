@@ -654,6 +654,30 @@ class TriviaGame {
             });
     }
 
+    copyTemplate() {
+        const btn = document.getElementById('btn-copy-template');
+        fetch('data/templatePreguntas-LLM.js')
+            .then(r => r.text())
+            .then(text => {
+                return navigator.clipboard.writeText(text).then(() => {
+                    // Visual feedback
+                    const original = btn.innerHTML;
+                    btn.innerHTML = '✅ ¡Copiado!';
+                    btn.disabled = true;
+                    setTimeout(() => {
+                        btn.innerHTML = original;
+                        btn.disabled = false;
+                        this.closeDownloadTemplateModal();
+                    }, 1800);
+                });
+            })
+            .catch(() => {
+                // Fallback: open file in new tab so user can copy manually
+                window.open('data/templatePreguntas-LLM.js', '_blank');
+                this.closeDownloadTemplateModal();
+            });
+    }
+
     // ─── IMPORT SYSTEM ─────────────────────────────────────────────────────
 
     /** Opens the tabbed "Cargar Trivia" modal and resets its state. */

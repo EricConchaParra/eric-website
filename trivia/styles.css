@@ -1275,6 +1275,16 @@ body {
 }
 .btn-template-download:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(251, 191, 36, 0.45); }
 .btn-template-download:active { transform: scale(0.97); }
+.btn-template-copy {
+    flex: 2; padding: 0.8rem 1.5rem; border-radius: var(--radius-md); border: none;
+    background: linear-gradient(135deg, #2DD4BF, #0891B2); color: #fff;
+    font-family: var(--font-family); font-size: 1.05rem; font-weight: 800;
+    cursor: pointer; transition: all var(--transition-fast);
+    box-shadow: 0 4px 16px rgba(45, 212, 191, 0.3);
+}
+.btn-template-copy:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45, 212, 191, 0.45); }
+.btn-template-copy:active { transform: scale(0.97); }
+.btn-template-copy:disabled { opacity: 0.8; cursor: default; transform: none; }
 
 /* === TABBED IMPORT MODAL OVERRIDES === */
 .import-modal { max-width: 540px; text-align: left; }
