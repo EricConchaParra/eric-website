@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Trivia interactiva para reuniones de iglesia - Juego de preguntas y desafíos entre dos equipos">
+    <title>Trivias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Error Screen -->
+        <div id="error-screen" class="screen hidden">
+            <div class="error-container">
+                <div class="error-icon">⚠️</div>
+                <h1>Error al cargar la trivia</h1>
+                <p id="error-message"></p>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <!-- Top Bar -->
+            <header id="top-bar">
+                <div class="header-content">
+                    <div class="score-panel score-red">
+                        <span class="team-label">🔴 Equipo Rojo</span>
+                        <span class="score-value" id="score-red">0</span>
+                    </div>
+                    <div class="center-info">
+                        <h1 id="game-title" class="game-title">Trivia</h1>
+                        <p id="game-theme" class="game-theme"></p>
+                        <div id="turn-indicator" class="turn-indicator turn-red">
+                            Turno del Equipo Rojo
+                        </div>
+                    </div>
+                    <div class="score-panel score-blue">
+                        <span class="team-label">🔵 Equipo Azul</span>
+                        <span class="score-value" id="score-blue">0</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Board -->
+            <main id="board" class="board">
+                <!-- Cards will be injected here -->
+            </main>
+
+            <!-- Bottom Bar -->
+            <footer id="bottom-bar">
+                <p id="help-text" class="help-text">El Equipo Rojo elige una tarjeta roja</p>
+                <div class="footer-actions">
+                    <!-- Hidden file input -->
+                    <input type="file" id="import-file-input" accept=".js" style="display:none"
+                        onchange="game.handleImportFile(this)">
+                    <button id="btn-download-template" class="btn-download-template"
+                        onclick="game.openDownloadTemplateModal()">⬇️ Descargar Template</button>
+                    <button id="btn-import" class="btn-import"
+                        onclick="game.openImportModal()">📂 Cargar Trivia</button>
+                    <button id="btn-restart" class="btn-restart" onclick="game.restart()">🔄 Reiniciar Partida</button>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Modal Overlay -->
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div id="modal" class="modal">
+                <!-- Multiple Choice Modal -->
+                <div id="modal-question" class="modal-content hidden">
+                    <div id="modal-team-badge-q" class="modal-team-badge">Equipo Rojo</div>
+                    <div class="modal-type">📝 Pregunta</div>
+                    <h2 id="modal-question-text" class="modal-question-text"></h2>
+                    <div id="modal-options" class="modal-options">
+                        <!-- Options injected here -->
+                    </div>
+                </div>
+
+                <!-- Feedback Modal -->
+                <div id="modal-feedback" class="modal-content hidden">
+                    <div id="feedback-icon" class="feedback-icon"></div>
+                    <h2 id="feedback-text" class="feedback-text"></h2>
+                    <p id="feedback-correct-answer" class="feedback-correct-answer"></p>
+                </div>
+
+                <!-- Challenge Modal -->
+                <div id="modal-challenge" class="modal-content hidden">
+                    <div id="modal-team-badge-c" class="modal-team-badge">Equipo Rojo</div>
+                    <div class="modal-type">⚡ Desafío Rápido</div>
+
+                    <!-- Phase 1: Pre-reveal (just the reveal button) -->
+                    <div id="challenge-pre-reveal" class="challenge-pre-reveal">
+                        <p class="challenge-pre-reveal-hint">Presiona el botón para ver el desafío</p>
+                        <button id="btn-reveal-challenge" class="btn-reveal-challenge" onclick="game.revealChallenge()">
+                            👁 Revelar Desafío
+                        </button>
+                    </div>
+
+                    <!-- Phase 2: Prompt + start button (hidden until reveal) -->
+                    <div id="challenge-revealed" class="challenge-revealed hidden">
+                        <h2 id="modal-challenge-text" class="modal-challenge-text"></h2>
+
+                        <div id="challenge-timer" class="challenge-timer hidden">
+                            <div id="timer-value" class="timer-value">5</div>
+                            <div class="timer-label">segundos</div>
+                            <div id="timer-ring" class="timer-ring">
+                                <svg viewBox="0 0 120 120">
+                                    <circle class="timer-ring-bg" cx="60" cy="60" r="54" />
+                                    <circle id="timer-ring-progress" class="timer-ring-progress" cx="60" cy="60"
+                                        r="54" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <button id="btn-start-challenge" class="btn-start-challenge"
+                            onclick="game.startChallengeTimer()">
+                            ▶ Iniciar Cuenta Regresiva
+                        </button>
+
+                        <div id="challenge-result-buttons" class="challenge-result-buttons hidden">
+                            <button class="btn-challenge-result btn-success"
+                                onclick="game.resolveChallengeResult(true)">
+                                ✅ Lo logró
+                            </button>
+                            <button class="btn-challenge-result btn-fail" onclick="game.resolveChallengeResult(false)">
+                                ❌ No lo logró
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time-Up Overlay -->
+        <div id="timeup-overlay" class="timeup-overlay hidden">
+            <div class="timeup-text">⏱ ¡TIEMPO!</div>
+        </div>
+
+        <!-- Download Template Info Modal -->
+        <div id="template-overlay" class="modal-overlay hidden">
+            <div class="modal template-modal">
+                <div class="template-modal-icon">🤖</div>
+                <h2 class="template-modal-title">¿Cómo crear tu propia Trivia?</h2>
+                <ol class="template-steps">
+                    <li>
+                        <span class="step-num">1</span>
+                        <span>Descarga el template — es un archivo <code>.js</code> con instrucciones para un LLM.</span>
+                    </li>
+                    <li>
+                        <span class="step-num">2</span>
+                        <span>Ábrelo en ChatGPT, Gemini, Claude u otro LLM y pídele que cree una trivia nueva sobre el tema que quieras.</span>
+                    </li>
+                    <li>
+                        <span class="step-num">3</span>
+                        <span>Obtén el resultado del LLM y cárgalo aquí usando el botón <strong>📂 Cargar Trivia</strong>: sube el archivo o pega el código directamente.</span>
+                    </li>
+                </ol>
+                <div class="template-tip">💡 El template ya incluye las reglas y la estructura exacta que el juego necesita.</div>
+                <div class="template-modal-buttons">
+                    <button class="btn-template-cancel" onclick="game.closeDownloadTemplateModal()">Cancelar</button>
+                    <button class="btn-template-download" onclick="game.downloadTemplate()">⬇️ Descargar Template</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Import / Load Trivia Modal -->
+        <div id="import-overlay" class="modal-overlay hidden">
+            <div class="modal import-modal">
+                <div class="import-modal-icon">📂</div>
+                <h2 class="import-modal-title">Cargar Trivia</h2>
+
+                <!-- Tabs -->
+                <div class="import-tabs">
+                    <button id="tab-file" class="import-tab active" onclick="game.switchImportTab('file')">📁 Subir archivo</button>
+                    <button id="tab-code" class="import-tab" onclick="game.switchImportTab('code')">📋 Pegar código</button>
+                </div>
+
+                <!-- Tab: File Upload -->
+                <div id="import-tab-file" class="import-tab-content">
+                    <p class="import-modal-subtitle">Selecciona el archivo <code>.js</code> generado por el LLM.</p>
+                    <button class="btn-pick-file" onclick="document.getElementById('import-file-input').click()">📁 Elegir archivo...</button>
+                    <p id="import-file-name" class="import-file-name">Ningún archivo seleccionado</p>
+                </div>
+
+                <!-- Tab: Paste Code -->
+                <div id="import-tab-code" class="import-tab-content hidden">
+                    <p class="import-modal-subtitle">Pega aquí el código que te devolvió el LLM.</p>
+                    <textarea id="import-code-input" class="import-code-textarea"
+                        placeholder="Pega el código del LLM aquí..."
+                        oninput="game.handleImportCode(this.value)"></textarea>
+                </div>
+
+                <!-- Preview / Error -->
+                <div id="import-info-box" class="import-info-box"></div>
+
+                <p class="import-warning">⚠️ La partida actual se reiniciará con la nueva trivia.</p>
+                <div class="import-buttons">
+                    <button class="btn-import-cancel" onclick="game.cancelImport()">Cancelar</button>
+                    <button id="btn-import-confirm" class="btn-import-confirm" onclick="game.confirmImport()" disabled>✅ Cargar y jugar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="gameover-overlay" class="modal-overlay hidden">
+            <div class="modal gameover-modal">
+                <div id="gameover-icon" class="gameover-icon">🏆</div>
+                <h1 id="gameover-title" class="gameover-title">¡Juego terminado!</h1>
+                <div class="gameover-scores">
+                    <div class="gameover-score gameover-score-red">
+                        <span class="gameover-team-name">🔴 Equipo Rojo</span>
+                        <span id="gameover-score-red" class="gameover-score-value">0</span>
+                    </div>
+                    <div class="gameover-vs">VS</div>
+                    <div class="gameover-score gameover-score-blue">
+                        <span class="gameover-team-name">🔵 Equipo Azul</span>
+                        <span id="gameover-score-blue" class="gameover-score-value">0</span>
+                    </div>
+                </div>
+                <h2 id="gameover-result" class="gameover-result"></h2>
+                <button class="btn-play-again" onclick="game.restart()">
+                    🎮 Jugar otra vez
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/current-trivia.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
