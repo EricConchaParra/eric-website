@@ -1179,10 +1179,7 @@ window.TRIVIA_DATA = {
         if (!code || !code.trim()) {
             this._pendingImportData = null;
             document.getElementById('import-info-box').innerHTML = '';
-            const confirmBtn = document.getElementById('btn-import-confirm');
-            confirmBtn.disabled = true;
-            confirmBtn.style.opacity = '0.4';
-            confirmBtn.style.cursor = 'not-allowed';
+            this._setImportConfirmState(false);
             return;
         }
         try {
@@ -1192,6 +1189,10 @@ window.TRIVIA_DATA = {
             this._updateImportPreview(parsed, null);
         } catch (err) {
             this._pendingImportData = null;
+            if (this._isIncompleteImportCodeError(err)) {
+                this._updateImportPendingState();
+                return;
+            }
             this._updateImportPreview(null, err.message);
         }
     }
@@ -1202,26 +1203,73 @@ window.TRIVIA_DATA = {
      * We intercept that by providing a fake window object.
      */
     _parseJsFile(source) {
+        const normalizedSource = this._normalizeImportedCode(source);
         const fakeWindow = {};
-        const fn = new Function('__fakeWindow__', `(function(window){ ${source} })(__fakeWindow__);`);
-        fn(fakeWindow);
+        try {
+            const fn = new Function('__fakeWindow__', `(function(window){ ${normalizedSource} })(__fakeWindow__);`);
+            fn(fakeWindow);
+        } catch (err) {
+            if (err instanceof SyntaxError) {
+                throw new Error(`Error de sintaxis en el código pegado: ${err.message}`);
+            }
+            throw err;
+        }
         if (!fakeWindow.TRIVIA_DATA) {
             throw new Error('El código no contiene window.TRIVIA_DATA. Asegúrate de que sigue la misma estructura que el template.');
         }
         return fakeWindow.TRIVIA_DATA;
     }
 
+    _normalizeImportedCode(source) {
+        let normalized = String(source || '').trim();
+
+        // Allow pasted markdown fences from ChatGPT/Claude/Gemini responses.
+        normalized = normalized.replace(/^```(?:javascript|js)?\s*/i, '');
+        normalized = normalized.replace(/\s*```$/, '');
+
+        const assignmentMatch = normalized.match(/window\.TRIVIA_DATA\s*=/);
+        if (assignmentMatch && assignmentMatch.index != null) {
+            normalized = normalized.slice(assignmentMatch.index);
+        }
+
+        const endIndex = normalized.lastIndexOf('};');
+        if (endIndex === -1) {
+            throw new Error('Error de sintaxis en el código pegado: Unexpected end of input');
+        }
+
+        return normalized.slice(0, endIndex + 2);
+    }
+
+    _isIncompleteImportCodeError(err) {
+        const message = String(err && err.message ? err.message : err).toLowerCase();
+        return (
+            message.includes('unexpected end of input') ||
+            message.includes('unterminated')
+        );
+    }
+
+    _setImportConfirmState(enabled) {
+        const confirmBtn = document.getElementById('btn-import-confirm');
+        confirmBtn.disabled = !enabled;
+        confirmBtn.style.opacity = enabled ? '' : '0.4';
+        confirmBtn.style.cursor = enabled ? '' : 'not-allowed';
+    }
+
+    _updateImportPendingState() {
+        const infoBox = document.getElementById('import-info-box');
+        infoBox.classList.remove('import-error');
+        infoBox.innerHTML = '<p class="import-pending-msg">Pega el bloque completo hasta la linea final <code>};</code>.</p>';
+        this._setImportConfirmState(false);
+    }
+
     /** Update the info preview panel inside the import modal. */
     _updateImportPreview(data, errorMsg) {
         const infoBox    = document.getElementById('import-info-box');
-        const confirmBtn = document.getElementById('btn-import-confirm');
 
         if (errorMsg) {
             infoBox.classList.add('import-error');
             infoBox.innerHTML = `<p class="import-error-msg">❌ ${errorMsg}</p>`;
-            confirmBtn.disabled = true;
-            confirmBtn.style.opacity = '0.4';
-            confirmBtn.style.cursor = 'not-allowed';
+            this._setImportConfirmState(false);
         } else {
             infoBox.classList.remove('import-error');
             infoBox.innerHTML = `
@@ -1242,9 +1290,7 @@ window.TRIVIA_DATA = {
                     <span class="import-info-value">${data.meta.version || '—'}</span>
                 </div>
             `;
-            confirmBtn.disabled = false;
-            confirmBtn.style.opacity = '';
-            confirmBtn.style.cursor = '';
+            this._setImportConfirmState(true);
         }
     }
 
