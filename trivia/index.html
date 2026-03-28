@@ -54,16 +54,21 @@
 
             <!-- Bottom Bar -->
             <footer id="bottom-bar">
-                <p id="help-text" class="help-text">El Equipo Rojo elige una tarjeta roja</p>
-                <div class="footer-actions">
-                    <!-- Hidden file input -->
-                    <input type="file" id="import-file-input" accept=".js" style="display:none"
-                        onchange="game.handleImportFile(this)">
-                    <button id="btn-download-template" class="btn-download-template"
-                        onclick="game.openDownloadTemplateModal()">⬇️ Descargar Template</button>
-                    <button id="btn-import" class="btn-import"
-                        onclick="game.openImportModal()">📂 Cargar Trivia</button>
-                    <button id="btn-restart" class="btn-restart" onclick="game.restart()">🔄 Reiniciar Partida</button>
+                <button id="mobile-footer-toggle" class="mobile-footer-toggle" type="button"
+                    aria-label="Abrir acciones del juego" aria-controls="bottom-bar-content" aria-expanded="false"
+                    onclick="game.toggleMobileFooter()">☰</button>
+                <div id="bottom-bar-content" class="bottom-bar-content">
+                    <p id="help-text" class="help-text">El Equipo Rojo elige una tarjeta roja</p>
+                    <div class="footer-actions">
+                        <!-- Hidden file input -->
+                        <input type="file" id="import-file-input" accept=".js" style="display:none"
+                            onchange="game.handleImportFile(this)">
+                        <button id="btn-download-template" class="btn-download-template"
+                            onclick="game.openDownloadTemplateModal()">⬇️ Descargar Template</button>
+                        <button id="btn-import" class="btn-import"
+                            onclick="game.openImportModal()">📂 Cargar Trivia</button>
+                        <button id="btn-restart" class="btn-restart" onclick="game.restart()">🔄 Reiniciar Partida</button>
+                    </div>
                 </div>
             </footer>
         </div>

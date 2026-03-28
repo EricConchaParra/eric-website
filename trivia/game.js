@@ -11,7 +11,9 @@ class TriviaGame {
         this.state = null;
         this.challengeInterval = null;
         this._pendingImportData = null;   // holds imported data awaiting confirmation
+        this.mobileFooterMediaQuery = window.matchMedia('(max-width: 640px)');
 
+        this.setupMobileFooter();
         this.init();
     }
 
@@ -29,6 +31,60 @@ class TriviaGame {
         } catch (err) {
             this.showError(err.message);
         }
+    }
+
+    setupMobileFooter() {
+        this.bottomBarEl = document.getElementById('bottom-bar');
+        this.mobileFooterToggleEl = document.getElementById('mobile-footer-toggle');
+
+        if (!this.bottomBarEl || !this.mobileFooterToggleEl) return;
+
+        const onViewportChange = () => {
+            if (!this.mobileFooterMediaQuery.matches) {
+                this.closeMobileFooter();
+            }
+        };
+
+        if (typeof this.mobileFooterMediaQuery.addEventListener === 'function') {
+            this.mobileFooterMediaQuery.addEventListener('change', onViewportChange);
+        } else if (typeof this.mobileFooterMediaQuery.addListener === 'function') {
+            this.mobileFooterMediaQuery.addListener(onViewportChange);
+        }
+
+        document.addEventListener('click', (event) => {
+            if (!this.mobileFooterMediaQuery.matches) return;
+            if (!this.bottomBarEl.classList.contains('is-open')) return;
+            if (this.bottomBarEl.contains(event.target)) return;
+            this.closeMobileFooter();
+        });
+
+        this.syncMobileFooter();
+    }
+
+    syncMobileFooter() {
+        if (!this.bottomBarEl || !this.mobileFooterToggleEl) return;
+
+        const isOpen = this.bottomBarEl.classList.contains('is-open');
+        this.mobileFooterToggleEl.setAttribute('aria-expanded', String(isOpen));
+        this.mobileFooterToggleEl.setAttribute(
+            'aria-label',
+            isOpen ? 'Cerrar acciones del juego' : 'Abrir acciones del juego'
+        );
+        this.mobileFooterToggleEl.textContent = isOpen ? '✕' : '☰';
+    }
+
+    toggleMobileFooter() {
+        if (!this.mobileFooterMediaQuery.matches || !this.bottomBarEl) return;
+
+        this.bottomBarEl.classList.toggle('is-open');
+        this.syncMobileFooter();
+    }
+
+    closeMobileFooter() {
+        if (!this.bottomBarEl) return;
+
+        this.bottomBarEl.classList.remove('is-open');
+        this.syncMobileFooter();
     }
 
     // ─── VALIDATION ────────────────────────────────────
@@ -581,6 +637,8 @@ class TriviaGame {
     // ─── GAME OVER ─────────────────────────────────────
 
     showGameOver() {
+        this.closeMobileFooter();
+
         const { scoreRed, scoreBlue } = this.state;
 
         document.getElementById('gameover-score-red').textContent = scoreRed;
@@ -607,6 +665,8 @@ class TriviaGame {
     // ─── RESTART ───────────────────────────────────────
 
     restart() {
+        this.closeMobileFooter();
+
         // Clean up
         if (this.challengeInterval) {
             clearInterval(this.challengeInterval);
@@ -974,6 +1034,7 @@ window.TRIVIA_DATA = {
     }
 
     openDownloadTemplateModal() {
+        this.closeMobileFooter();
         document.getElementById('template-overlay').classList.remove('hidden');
     }
 
@@ -1043,6 +1104,7 @@ window.TRIVIA_DATA = {
 
     /** Opens the tabbed "Cargar Trivia" modal and resets its state. */
     openImportModal() {
+        this.closeMobileFooter();
         this._pendingImportData = null;
         // Reset info box and confirm button
         document.getElementById('import-info-box').innerHTML = '';
