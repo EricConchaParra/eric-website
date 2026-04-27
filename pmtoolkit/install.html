@@ -39,6 +39,7 @@
         .download-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
             background: linear-gradient(135deg, #00C675 0%, #009B5A 100%);
             color: white !important;
@@ -48,8 +49,8 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            margin-bottom: 50px;
             box-shadow: 0 4px 15px rgba(0, 198, 117, 0.3);
+            min-height: 60px;
         }
         .download-btn:hover {
             transform: translateY(-2px);
@@ -58,8 +59,8 @@
         .repo-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            margin-left: 14px;
             padding: 16px 24px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -69,6 +70,7 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
+            min-height: 60px;
         }
         .repo-btn:hover {
             transform: translateY(-2px);
@@ -79,6 +81,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
+            gap: 14px;
             margin-bottom: 24px;
         }
         .repo-note {
@@ -136,8 +139,12 @@
             font-size: 0.95em;
         }
         @media (max-width: 640px) {
+            .install-links {
+                align-items: stretch;
+            }
+            .download-btn,
             .repo-btn {
-                margin-left: 0;
+                width: 100%;
             }
         }
     </style>
