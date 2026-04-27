@@ -551,6 +551,7 @@
 
 .pm-analytics-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
 }
 
 .pm-analytic-card {
@@ -559,6 +560,16 @@
     padding: 1.5rem;
     border-radius: 1.5rem;
     background: #ffffff;
+}
+
+.pm-analytic-card img {
+    border-radius: 1.1rem;
+    background: #f8fafc;
+}
+
+.pm-analytic-card-narrow-image img {
+    max-width: 84%;
+    margin: 0 auto;
 }
 
 .pm-analytic-card h3,
